@@ -29,9 +29,9 @@
 - **Others:** 3D Printing, CNC, Blockchain
 
 ## 📫 Contact
-- **Email:** [이메일 주소 입력]
-- **LinkedIn:** [링크드인 주소 입력]
-- **Blog:** [블로그 주소 입력 (선택)]
+- **Email:** bahamut@20ft.co.kr
+- **LinkedIn:** 링크드인 해야하는데
+- **Facebook:** https://www.facebook.com/mutzero
 
 ---
 *※ 상세한 포트폴리오 문서나 프로젝트 산출물은 개별 디렉토리 및 링크를 통해 확인하실 수 있습니다.*
