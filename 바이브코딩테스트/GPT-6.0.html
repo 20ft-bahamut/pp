@@ -1,0 +1,1433 @@
+<!DOCTYPE html><html lang="ko"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="기획, 개발, 운영을 연결해 실행 가능한 서비스를 만드는 개발자 출신 PM 최병철의 포트폴리오.">
+  <meta name="theme-color" content="#f7f7f2">
+  <title>최병철 — The Practical Innovator</title>
+
+  <!--
+    단일 HTML 실행을 위한 CDN 구성입니다.
+    실제 배포 시 Tailwind CSS는 빌드한 정적 CSS로 교체하는 것을 권장합니다.
+    프로젝트 그래픽은 실제 서비스 화면이 아닌 소개용 콘셉트 시각화입니다.
+    경력과 프로젝트 정보는 제공된 이력서·포트폴리오를 기준으로 작성했습니다.
+  -->
+
+  <!-- SUITE -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE@2/fonts/variable/woff2/SUITE-Variable.css">
+
+  <!-- Google Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght@400;500;600&amp;display=block">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "SUITE Variable", "SUITE", sans-serif;
+      --color-paper: #f7f7f2;
+      --color-ink: #20211f;
+      --color-muted: #696b63;
+      --color-line: #dedfd5;
+      --color-cobalt: #244bff;
+      --color-lime: #d7fa52;
+      --color-orange: #ff7144;
+      --color-pink: #f1b9e2;
+      --color-lilac: #dbd5fc;
+    }
+
+    @layer base {
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+      }
+
+      body {
+        font-family: var(--font-sans);
+        background: var(--color-paper);
+        color: var(--color-ink);
+        -webkit-font-smoothing: antialiased;
+        word-break: keep-all;
+      }
+
+      ::selection {
+        background: var(--color-lime);
+        color: var(--color-ink);
+      }
+
+      button, a, summary {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      button:not(:disabled), summary {
+        cursor: pointer;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--color-cobalt);
+        outline-offset: 5px;
+      }
+
+      a, button {
+        touch-action: manipulation;
+      }
+    }
+
+    @layer components {
+      .shell {
+        @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
+      }
+
+      .eyebrow {
+        @apply flex items-center gap-2 text-xs font-extrabold tracking-[0.16em] uppercase;
+      }
+
+      .pill {
+        @apply inline-flex items-center gap-2 rounded-full border border-current/15
+               px-3 py-1.5 text-xs font-bold;
+      }
+
+      .btn {
+        @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full
+               px-6 py-3 text-sm font-extrabold transition duration-200
+               hover:-translate-y-0.5 active:translate-y-0;
+      }
+
+      .filter-btn {
+        @apply min-h-11 rounded-full border border-line px-5 py-2.5
+               text-sm font-bold transition hover:border-ink;
+      }
+
+      .filter-btn[aria-pressed="true"] {
+        @apply border-ink bg-ink text-white;
+      }
+
+      .project-card {
+        @apply overflow-hidden rounded-[24px] border border-line bg-white
+               transition duration-300 hover:-translate-y-1 hover:shadow-xl
+               hover:shadow-ink/5;
+      }
+
+      .project-open {
+        @apply inline-flex min-h-11 items-center gap-1 text-sm font-extrabold
+               transition hover:text-cobalt;
+      }
+    }
+  </style>
+
+  <style>
+    .material-symbols-rounded {
+      font-family: "Material Symbols Rounded";
+      font-weight: 400;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    .dot-grid {
+      background-image: radial-gradient(#20211f26 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 6.3vw, 5.65rem);
+      line-height: 1.13;
+      letter-spacing: -0.065em;
+      font-weight: 900;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.2;
+      letter-spacing: -0.055em;
+      font-weight: 850;
+    }
+
+    .starburst {
+      clip-path: polygon(
+        50% 0%, 59% 28%, 75% 7%, 73% 35%,
+        93% 25%, 80% 47%, 100% 50%, 78% 59%,
+        93% 75%, 66% 73%, 75% 93%, 55% 80%,
+        50% 100%, 41% 78%, 25% 93%, 27% 66%,
+        7% 75%, 20% 53%, 0% 50%, 22% 41%,
+        7% 25%, 34% 27%, 25% 7%, 45% 20%
+      );
+    }
+
+    .float-card {
+      animation: float-card 6s ease-in-out infinite;
+    }
+
+    @keyframes float-card {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-9px) rotate(-3deg); }
+    }
+
+    .project-card[hidden] { display: none; }
+
+    dialog {
+      padding: 0;
+      border: 0;
+      color: #20211f;
+      background: #f7f7f2;
+    }
+
+    dialog::backdrop {
+      background: rgb(16 20 30 / 65%);
+      backdrop-filter: blur(8px);
+    }
+
+    dialog[open] {
+      animation: dialog-in 180ms ease-out;
+    }
+
+    @keyframes dialog-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    #toast {
+      transition: opacity 180ms, transform 180ms;
+    }
+
+    #toast[data-visible="false"] {
+      opacity: 0;
+      transform: translate(-50%, 16px);
+      pointer-events: none;
+    }
+
+    #toast[data-visible="true"] {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    @media print {
+      header, .no-print, dialog, #toast, #hero-art {
+        display: none !important;
+      }
+
+      body { background: white; }
+      section { padding-block: 24px !important; }
+      .project-card[hidden] { display: block !important; }
+      .project-card, .career-row { break-inside: avoid; }
+      #about, #contact {
+        background: white !important;
+        color: #20211f !important;
+      }
+      #about p, #about h3, #contact p {
+        color: #20211f !important;
+      }
+      a { text-decoration: none; }
+      * { box-shadow: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="fixed left-4 top-4 z-[100] -translate-y-24 rounded-xl bg-ink px-5 py-3
+           font-bold text-white focus:translate-y-0">
+    본문으로 바로가기
+  </a>
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 border-b border-line bg-paper/95 backdrop-blur-xl">
+    <div class="shell flex h-20 items-center justify-between gap-4">
+      <a href="#home" class="flex items-center gap-2.5" aria-label="최병철 홈">
+        <span class="flex size-9 items-center justify-center rounded-full bg-cobalt text-lime">
+          <span class="material-symbols-rounded" aria-hidden="true">asterisk</span>
+        </span>
+        <span class="text-lg font-black tracking-tight">
+          BYEONGCHEOL<span class="text-cobalt">.</span>
+        </span>
+      </a>
+
+      <nav aria-label="주 메뉴" class="hidden items-center gap-8 text-sm font-bold md:flex">
+        <a href="#about" class="transition hover:text-cobalt">소개</a>
+        <a href="#projects" class="transition hover:text-cobalt">프로젝트</a>
+        <a href="#experience" class="transition hover:text-cobalt">경력</a>
+        <a href="#contact" class="btn bg-ink text-white hover:bg-cobalt">
+          함께 이야기하기
+          <span class="material-symbols-rounded text-[18px]" aria-hidden="true">north_east</span>
+        </a>
+      </nav>
+
+      <button id="menu-toggle" type="button" class="flex size-11 items-center justify-center rounded-full border border-line md:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="메뉴 열기">
+        <span id="menu-icon" class="material-symbols-rounded" aria-hidden="true">menu</span>
+      </button>
+    </div>
+
+    <nav id="mobile-menu" aria-label="모바일 메뉴" class="border-t border-line px-5 py-4 md:hidden" hidden="">
+      <div class="flex flex-col gap-1 font-bold">
+        <a href="#about" class="rounded-xl px-4 py-3 hover:bg-white">소개</a>
+        <a href="#projects" class="rounded-xl px-4 py-3 hover:bg-white">프로젝트</a>
+        <a href="#experience" class="rounded-xl px-4 py-3 hover:bg-white">경력</a>
+        <a href="#contact" class="rounded-xl bg-cobalt px-4 py-3 text-white">함께 이야기하기 ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section id="home" class="overflow-hidden pb-12 pt-12 sm:pt-16 lg:pb-16 lg:pt-20">
+      <div class="shell">
+        <div class="grid items-center gap-12 lg:grid-cols-[1.12fr_1fr] lg:gap-10">
+          <div>
+            <div class="eyebrow mb-7 text-cobalt">
+              <span class="h-2 w-2 rounded-full bg-cobalt"></span>
+              THE PRACTICAL INNOVATOR
+            </div>
+
+            <h1 class="hero-title">
+              복잡한 문제를,<br>
+              <span class="relative inline-block text-cobalt">
+                작동하는
+                <svg class="absolute -bottom-1 left-0 -z-10 w-full" height="16" viewBox="0 0 300 16" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M3 11 Q140 1 297 9" stroke="#d7fa52" stroke-width="12" fill="none"></path>
+                </svg>
+              </span><br>
+              서비스로.
+            </h1>
+
+            <p class="mt-7 text-xl font-extrabold tracking-tight sm:text-2xl">
+              기획과 실행을 연결하는 PM, 최병철입니다.
+            </p>
+            <p class="mt-4 max-w-lg text-base leading-8 text-muted">
+              개발자의 이해력으로 구조를 설계하고,<br class="hidden sm:block">
+              운영자의 시선으로 흐름을 다듬습니다.<br class="hidden sm:block">
+              화면을 넘어, 실제로 돌아가는 서비스를 만듭니다.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#projects" class="btn bg-cobalt text-white hover:bg-ink">
+                프로젝트 살펴보기
+                <span class="material-symbols-rounded text-[20px]" aria-hidden="true">arrow_downward</span>
+              </a>
+              <a href="#contact" class="btn border border-line bg-white hover:border-ink">
+                연락하기
+                <span class="material-symbols-rounded text-[20px]" aria-hidden="true">north_east</span>
+              </a>
+            </div>
+
+            <div class="mt-9 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold text-muted">
+              <span>Platform</span>
+              <span class="size-1 rounded-full bg-muted/40"></span>
+              <span>Product</span>
+              <span class="size-1 rounded-full bg-muted/40"></span>
+              <span>Execution PM</span>
+            </div>
+          </div>
+
+          <!-- Original CSS illustration, not a real product screenshot -->
+          <div id="hero-art" class="dot-grid relative isolate mx-auto flex min-h-[450px] w-full max-w-[550px]
+                   items-center justify-center rounded-[32px] bg-lime p-7 sm:min-h-[510px] sm:p-10" role="img" aria-label="문제 정의, 서비스 설계, 개발과 운영을 연결하는 업무 방식을 표현한 그래픽">
+            <div class="absolute left-6 top-6 flex items-center gap-2 text-[11px] font-black tracking-widest">
+              <span class="size-2 rounded-full bg-ink"></span>
+              FROM COMPLEXITY TO CLARITY
+            </div>
+
+            <div class="absolute right-5 top-14 flex size-24 rotate-12 items-center justify-center sm:size-28">
+              <div class="starburst absolute inset-0 bg-orange"></div>
+              <span class="relative text-center text-sm font-black leading-tight">
+                THINK.<br>BUILD.<br>MAKE IT WORK.
+              </span>
+            </div>
+
+            <div class="relative mt-9 w-full max-w-[365px] -rotate-3 rounded-2xl border border-white/20
+                        bg-ink p-5 text-white shadow-[12px_14px_0_0_#20211f18] sm:p-6">
+              <div class="mb-7 flex items-center justify-between border-b border-white/15 pb-4">
+                <div class="flex gap-1.5">
+                  <span class="size-2 rounded-full bg-orange"></span>
+                  <span class="size-2 rounded-full bg-lime"></span>
+                  <span class="size-2 rounded-full bg-lilac"></span>
+                </div>
+                <span class="text-[10px] font-bold tracking-widest text-white/50">MY WORKFLOW</span>
+                <span class="material-symbols-rounded text-lg text-lime" aria-hidden="true">terminal</span>
+              </div>
+
+              <div class="flex items-center gap-3 rounded-xl border border-white/15 bg-white/5 p-4">
+                <span class="flex size-10 items-center justify-center rounded-xl bg-lilac text-ink">
+                  <span class="material-symbols-rounded" aria-hidden="true">search</span>
+                </span>
+                <div>
+                  <p class="text-[10px] font-bold tracking-wider text-white/45">01 / UNDERSTAND</p>
+                  <p class="mt-1 text-sm font-extrabold">문제와 운영 맥락을 이해하고</p>
+                </div>
+              </div>
+
+              <div class="flex h-8 justify-center text-lime">
+                <span class="material-symbols-rounded self-center" aria-hidden="true">south</span>
+              </div>
+
+              <div class="flex items-center gap-3 rounded-xl bg-cobalt p-4">
+                <span class="flex size-10 items-center justify-center rounded-xl bg-white/15">
+                  <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
+                </span>
+                <div>
+                  <p class="text-[10px] font-bold tracking-wider text-white/65">02 / STRUCTURE</p>
+                  <p class="mt-1 text-sm font-extrabold">실행 가능한 구조로 설계하고</p>
+                </div>
+              </div>
+
+              <div class="flex h-8 justify-center text-lime">
+                <span class="material-symbols-rounded self-center" aria-hidden="true">south</span>
+              </div>
+
+              <div class="flex items-center gap-3 rounded-xl bg-lime p-4 text-ink">
+                <span class="flex size-10 items-center justify-center rounded-xl bg-ink/10">
+                  <span class="material-symbols-rounded" aria-hidden="true">rocket_launch</span>
+                </span>
+                <div>
+                  <p class="text-[10px] font-bold tracking-wider text-ink/55">03 / EXECUTE</p>
+                  <p class="mt-1 text-sm font-extrabold">현장에서 작동하게 만듭니다</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="float-card absolute -left-1 bottom-9 rounded-2xl border border-ink/10
+                        bg-white px-5 py-4 shadow-lg sm:left-2">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-rounded text-cobalt" aria-hidden="true">data_object</span>
+                <div>
+                  <p class="text-[10px] font-bold tracking-widest text-muted">DEVELOPER → PM</p>
+                  <p class="mt-1 text-sm font-black">기술을 이해하는 기획</p>
+                </div>
+              </div>
+            </div>
+
+            <span class="absolute bottom-5 right-6 text-[10px] font-bold tracking-widest text-ink/55">
+              CONCEPT VISUAL / NOT A PRODUCT UI
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-14 grid grid-cols-2 divide-x divide-line rounded-2xl border border-line
+                    bg-white/60 py-6 sm:mt-16 md:grid-cols-4">
+          <div class="px-5 sm:px-8">
+            <p class="text-3xl font-black tracking-tighter sm:text-4xl">20<span class="text-cobalt">+</span></p>
+            <p class="mt-2 text-xs font-semibold text-muted sm:text-sm">개발부터 PM까지의 경험</p>
+          </div>
+          <div class="px-5 sm:px-8">
+            <p class="text-3xl font-black tracking-tighter sm:text-4xl">0<span class="text-cobalt">→</span>1</p>
+            <p class="mt-2 text-xs font-semibold text-muted sm:text-sm">아이디어에서 프로토타입까지</p>
+          </div>
+          <div class="mt-6 px-5 sm:px-8 md:mt-0">
+            <p class="text-3xl font-black tracking-tighter sm:text-4xl">End<span class="text-cobalt">-</span>to-End</p>
+            <p class="mt-2 text-xs font-semibold text-muted sm:text-sm">기획 · 구축 · 운영 고도화</p>
+          </div>
+          <div class="mt-6 px-5 sm:px-8 md:mt-0">
+            <p class="text-3xl font-black tracking-tighter sm:text-4xl">Hands<span class="text-cobalt">-</span>on</p>
+            <p class="mt-2 text-xs font-semibold text-muted sm:text-sm">필요한 도구는 직접 구현</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand strip -->
+    <div class="overflow-hidden border-y border-ink bg-ink py-4 text-lime">
+      <div class="shell flex flex-wrap items-center justify-between gap-x-7 gap-y-3
+                  text-xs font-extrabold tracking-[0.13em] sm:text-sm">
+        <span>SERVICE DESIGN</span>
+        <span class="material-symbols-rounded text-lg" aria-hidden="true">asterisk</span>
+        <span>TECHNICAL UNDERSTANDING</span>
+        <span class="material-symbols-rounded hidden text-lg sm:block" aria-hidden="true">asterisk</span>
+        <span>OPERATION FIRST</span>
+        <span class="material-symbols-rounded hidden text-lg lg:block" aria-hidden="true">asterisk</span>
+        <span class="hidden lg:block">REAL EXECUTION</span>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section id="about" class="bg-cobalt py-20 text-white lg:py-24">
+      <div class="shell">
+        <div class="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-20">
+          <div>
+            <p class="eyebrow text-lime">
+              <span class="material-symbols-rounded text-lg" aria-hidden="true">waving_hand</span>
+              A LITTLE ABOUT ME
+            </p>
+            <h2 class="section-title mt-5">
+              화면만 그리는<br>
+              기획자는 아닙니다<span class="text-lime">.</span>
+            </h2>
+          </div>
+          <div class="flex flex-col justify-end">
+            <p class="text-lg font-semibold leading-8 text-white/90">
+              개발자로 시작해 상용 커머스 솔루션, 엔터프라이즈 쇼핑몰,
+              자사몰 운영 고도화까지 경험했습니다.
+            </p>
+            <p class="mt-4 text-base leading-8 text-white/75">
+              제가 생각하는 좋은 기획은 사용자 경험과 운영 현실을 함께 다루는 일입니다.
+              요구사항을 정책과 데이터 흐름으로 구체화하고,
+              개발·디자인·운영이 같은 방향으로 움직일 수 있도록 연결합니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-4 md:grid-cols-3">
+          <article class="rounded-2xl border border-white/20 bg-white/10 p-7">
+            <div class="mb-8 flex items-center justify-between">
+              <span class="flex size-12 items-center justify-center rounded-xl bg-lime text-ink">
+                <span class="material-symbols-rounded" aria-hidden="true">account_tree</span>
+              </span>
+              <span class="text-xs font-bold text-white/60">01 / STRUCTURE</span>
+            </div>
+            <h3 class="text-xl font-extrabold">기능보다 흐름을 먼저</h3>
+            <p class="mt-3 text-sm leading-7 text-white/80">
+              사용자와 운영자의 여정을 함께 정리합니다.
+              표준 기능, 커스터마이징, 외부 연동의 경계를 명확히 나눕니다.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-white/20 bg-white/10 p-7">
+            <div class="mb-8 flex items-center justify-between">
+              <span class="flex size-12 items-center justify-center rounded-xl bg-pink text-ink">
+                <span class="material-symbols-rounded" aria-hidden="true">terminal</span>
+              </span>
+              <span class="text-xs font-bold text-white/60">02 / TECHNOLOGY</span>
+            </div>
+            <h3 class="text-xl font-extrabold">기술을 실행의 언어로</h3>
+            <p class="mt-3 text-sm leading-7 text-white/80">
+              PHP·Node.js 개발 경험을 바탕으로
+              상태값, 데이터 흐름, 예외 케이스까지 구체화해 구현의 간극을 줄입니다.
+            </p>
+          </article>
+
+          <article class="rounded-2xl border border-white/20 bg-white/10 p-7">
+            <div class="mb-8 flex items-center justify-between">
+              <span class="flex size-12 items-center justify-center rounded-xl bg-orange text-ink">
+                <span class="material-symbols-rounded" aria-hidden="true">tune</span>
+              </span>
+              <span class="text-xs font-bold text-white/60">03 / OPERATIONS</span>
+            </div>
+            <h3 class="text-xl font-extrabold">운영에서 답을 찾는 설계</h3>
+            <p class="mt-3 text-sm leading-7 text-white/80">
+              주문, 송장, 취소·교환, 클레임의 병목을 살핍니다.
+              사람이 판단할 일과 시스템이 처리할 일을 구분합니다.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-20 lg:py-24">
+      <div class="shell">
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p class="eyebrow text-cobalt">SELECTED WORK / 05 PROJECTS</p>
+            <h2 class="section-title mt-4">생각을 구조로, 구조를 실행으로.</h2>
+          </div>
+          <p class="max-w-xs text-sm leading-7 text-muted">
+            무엇을 만들었는지보다,<br>
+            어떤 문제를 어떻게 풀었는지에 집중합니다.
+          </p>
+        </div>
+
+        <div class="no-print mt-8 flex flex-wrap gap-2" role="group" aria-label="프로젝트 분야 필터">
+          <button class="filter-btn" data-filter="all" aria-pressed="true">전체 <span class="ml-1 opacity-60">05</span></button>
+          <button class="filter-btn" data-filter="commerce" aria-pressed="false">커머스 &amp; 운영</button>
+          <button class="filter-btn" data-filter="platform" aria-pressed="false">플랫폼</button>
+          <button class="filter-btn" data-filter="new" aria-pressed="false">0 → 1</button>
+        </div>
+        <p id="filter-status" class="sr-only" role="status" aria-live="polite">전체 프로젝트 5개</p>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-6">
+          <!-- Orderfresh -->
+          <article class="project-card group md:col-span-1 lg:col-span-3" data-category="commerce">
+            <div class="relative flex h-64 items-center justify-center overflow-hidden bg-lime p-7 sm:h-72">
+              <span class="absolute left-5 top-5 text-[10px] font-extrabold tracking-widest">OPERATIONS / AI-ASSISTED BUILD</span>
+              <span class="absolute right-5 top-5 rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-bold">CONCEPT</span>
+
+              <div class="mt-6 w-full max-w-[370px] -rotate-3 rounded-xl border border-ink/10
+                          bg-paper p-4 shadow-[8px_8px_0_#20211f15] transition duration-500 group-hover:rotate-0">
+                <div class="flex items-center justify-between border-b border-line pb-3">
+                  <span class="flex items-center gap-2 text-sm font-black">
+                    <span class="material-symbols-rounded text-lg text-cobalt" aria-hidden="true">space_dashboard</span>
+                    Orderfresh / Operations
+                  </span>
+                  <span class="size-2 rounded-full bg-cobalt"></span>
+                </div>
+                <div class="mt-4 grid grid-cols-3 gap-2 text-center text-[11px] font-bold">
+                  <div class="rounded-lg bg-lilac px-2 py-4">
+                    <span class="material-symbols-rounded mb-2 block" aria-hidden="true">inventory_2</span>
+                    주문 취합
+                  </div>
+                  <div class="rounded-lg bg-lime px-2 py-4">
+                    <span class="material-symbols-rounded mb-2 block" aria-hidden="true">sync_alt</span>
+                    처리 흐름
+                  </div>
+                  <div class="rounded-lg bg-pink px-2 py-4">
+                    <span class="material-symbols-rounded mb-2 block" aria-hidden="true">monitoring</span>
+                    운영 파악
+                  </div>
+                </div>
+                <div class="mt-3 flex items-center gap-2 rounded-lg bg-ink px-3 py-2 text-[10px] font-semibold text-white">
+                  <span class="material-symbols-rounded text-sm text-lime" aria-hidden="true">auto_awesome</span>
+                  반복 업무는 도구로, 판단은 사람에게.
+                </div>
+              </div>
+            </div>
+            <div class="p-6 sm:p-7">
+              <div class="flex flex-wrap gap-2">
+                <span class="pill bg-lime/40">운영 고도화</span>
+                <span class="pill">바이브코딩</span>
+              </div>
+              <h3 class="mt-4 text-2xl font-extrabold tracking-tight">오더프레쉬</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                주문 취합 도구와 운영 대시보드를 직접 만들고,
+                운영 개선을 신규 사업의 확장 방향까지 연결했습니다.
+              </p>
+              <div class="mt-5 flex items-center justify-between border-t border-line pt-4">
+                <span class="text-xs font-semibold text-muted">운영 진단 · 도구 구현 · 사업 기획</span>
+                <button type="button" class="project-open" data-project="orderfresh" aria-haspopup="dialog" aria-label="오더프레쉬 프로젝트 상세 보기">
+                  자세히
+                  <span class="material-symbols-rounded text-xl" aria-hidden="true">north_east</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Firstmall -->
+          <article class="project-card group md:col-span-1 lg:col-span-3" data-category="commerce">
+            <div class="relative flex h-64 items-center justify-center overflow-hidden bg-cobalt p-7 sm:h-72">
+              <span class="absolute left-5 top-5 text-[10px] font-extrabold tracking-widest text-white/85">COMMERCE / ENGINE &amp; POLICY</span>
+              <span class="absolute right-5 top-5 rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-bold text-white">CONCEPT</span>
+
+              <div class="relative mt-6 w-full max-w-[350px]">
+                <div class="mx-auto flex w-40 items-center justify-center gap-2 rounded-xl bg-white px-4 py-5
+                            text-lg font-black shadow-lg transition duration-500 group-hover:-translate-y-1">
+                  <span class="material-symbols-rounded text-cobalt" aria-hidden="true">deployed_code</span>
+                  FIRSTMALL
+                </div>
+                <div class="mx-auto h-6 w-px bg-white/50"></div>
+                <div class="mx-auto h-5 w-[68%] rounded-t-lg border-x border-t border-white/50"></div>
+                <div class="grid grid-cols-3 gap-3 text-center text-sm font-bold">
+                  <div class="rounded-xl bg-lime px-2 py-5">
+                    <span class="material-symbols-rounded mb-2 block" aria-hidden="true">group</span>
+                    회원
+                  </div>
+                  <div class="rounded-xl bg-pink px-2 py-5">
+                    <span class="material-symbols-rounded mb-2 block" aria-hidden="true">handshake</span>
+                    제휴
+                  </div>
+                  <div class="rounded-xl bg-lilac px-2 py-5">
+                    <span class="material-symbols-rounded mb-2 block" aria-hidden="true">admin_panel_settings</span>
+                    관리자
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6 sm:p-7">
+              <div class="flex flex-wrap gap-2">
+                <span class="pill bg-lilac/50">상용 솔루션</span>
+                <span class="pill">운영 정책</span>
+              </div>
+              <h3 class="mt-4 text-2xl font-extrabold tracking-tight">가비아 퍼스트몰</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                회원·제휴·관리자 흐름을 구조화하고,
+                여러 상점에 반복 적용할 수 있는 상용 커머스의 운영 기준을 정리했습니다.
+              </p>
+              <div class="mt-5 flex items-center justify-between border-t border-line pt-4">
+                <span class="text-xs font-semibold text-muted">서비스 기획 · 프로세스 정의 · 개발</span>
+                <button type="button" class="project-open" data-project="firstmall" aria-haspopup="dialog" aria-label="가비아 퍼스트몰 프로젝트 상세 보기">
+                  자세히
+                  <span class="material-symbols-rounded text-xl" aria-hidden="true">north_east</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Shopping map -->
+          <article class="project-card group lg:col-span-2" data-category="platform">
+            <div class="relative flex h-52 items-center justify-center overflow-hidden bg-lilac p-6">
+              <span class="absolute left-5 top-5 text-[10px] font-extrabold tracking-widest">DATA PLATFORM</span>
+              <div class="mt-6 flex items-center gap-3 transition duration-500 group-hover:scale-105" aria-hidden="true">
+                <div class="space-y-2 text-center text-[10px] font-black">
+                  <div class="rounded-md bg-white px-3 py-2">XML / JSON</div>
+                  <div class="rounded-md bg-white px-3 py-2">HTML / CSV</div>
+                </div>
+                <span class="material-symbols-rounded text-cobalt">arrow_right_alt</span>
+                <div class="flex size-20 items-center justify-center rounded-2xl bg-cobalt text-white shadow-lg">
+                  <span class="material-symbols-rounded !text-4xl">travel_explore</span>
+                </div>
+              </div>
+              <span class="absolute bottom-3 right-4 text-[9px] font-bold text-ink/50">CONCEPT VISUAL</span>
+            </div>
+            <div class="p-6">
+              <span class="pill bg-lilac/40">데이터 표준화</span>
+              <h3 class="mt-4 text-xl font-extrabold tracking-tight">쇼핑맵 · 소셜매니저</h3>
+              <p class="mt-3 text-sm leading-7 text-muted">
+                제각각 들어오는 상품 정보를 하나의 기준으로.
+                수집·정제·공급과 지역 기반 탐색을 연결했습니다.
+              </p>
+              <button type="button" class="project-open mt-4" data-project="shoppingmap" aria-haspopup="dialog">
+                프로젝트 살펴보기
+                <span class="material-symbols-rounded text-xl" aria-hidden="true">north_east</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Study -->
+          <article class="project-card group lg:col-span-2" data-category="commerce">
+            <div class="relative flex h-52 items-center justify-center overflow-hidden bg-orange p-6">
+              <span class="absolute left-5 top-5 text-[10px] font-extrabold tracking-widest">POLICY TO PRODUCT</span>
+              <div class="mt-5 w-48 rotate-3 rounded-xl bg-paper p-4 shadow-[7px_7px_0_#20211f18]
+                          transition duration-500 group-hover:rotate-0" aria-hidden="true">
+                <div class="mb-3 text-xs font-black">SERVICE CHECKLIST</div>
+                <div class="space-y-2 text-xs font-bold">
+                  <div class="flex items-center gap-2"><span class="material-symbols-rounded text-lg text-cobalt">check_circle</span> 정책 &amp; 사용자 흐름</div>
+                  <div class="flex items-center gap-2"><span class="material-symbols-rounded text-lg text-cobalt">check_circle</span> 화면 &amp; 개발 산출물</div>
+                  <div class="flex items-center gap-2"><span class="material-symbols-rounded text-lg text-cobalt">check_circle</span> WBS &amp; QA</div>
+                </div>
+              </div>
+              <span class="absolute bottom-3 right-4 text-[9px] font-bold text-ink/60">CONCEPT VISUAL</span>
+            </div>
+            <div class="p-6">
+              <span class="pill bg-orange/15">정책 설계 · 구현</span>
+              <h3 class="mt-4 text-xl font-extrabold tracking-tight">공부선배마켓</h3>
+              <p class="mt-3 text-sm leading-7 text-muted">
+                정책 정의부터 화면 설계, 개발, 일정 조율까지.
+                요구사항을 실제 운영 가능한 서비스로 구현했습니다.
+              </p>
+              <button type="button" class="project-open mt-4" data-project="study" aria-haspopup="dialog">
+                프로젝트 살펴보기
+                <span class="material-symbols-rounded text-xl" aria-hidden="true">north_east</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Park golf -->
+          <article class="project-card group lg:col-span-2" data-category="new">
+            <div class="relative flex h-52 items-center justify-center overflow-hidden bg-pink p-6">
+              <span class="absolute left-5 top-5 text-[10px] font-extrabold tracking-widest">ZERO TO ONE</span>
+              <div class="relative mt-5 flex items-center gap-4 transition duration-500 group-hover:-translate-y-1" aria-hidden="true">
+                <span class="material-symbols-rounded !text-6xl text-ink/75">sports_golf</span>
+                <div class="rotate-6 rounded-[22px] border-[5px] border-ink bg-paper px-6 py-4 shadow-xl">
+                  <div class="mx-auto mb-3 h-1 w-6 rounded-full bg-ink/20"></div>
+                  <p class="text-center text-[10px] font-black">SCORE</p>
+                  <div class="mt-2 flex size-14 items-center justify-center rounded-full bg-lime text-3xl font-black">+1</div>
+                  <div class="mt-3 h-2 rounded-full bg-cobalt"></div>
+                </div>
+              </div>
+              <span class="absolute bottom-3 right-4 text-[9px] font-bold text-ink/60">CONCEPT VISUAL</span>
+            </div>
+            <div class="p-6">
+              <span class="pill bg-pink/35">0 → 1 · 프로토타입</span>
+              <h3 class="mt-4 text-xl font-extrabold tracking-tight">바로파크골프</h3>
+              <p class="mt-3 text-sm leading-7 text-muted">
+                시니어 사용성과 오프라인 환경을 고려한 스코어 서비스.
+                문제 정의부터 프로토타입까지 직접 주도했습니다.
+              </p>
+              <button type="button" class="project-open mt-4" data-project="parkgolf" aria-haspopup="dialog">
+                프로젝트 살펴보기
+                <span class="material-symbols-rounded text-xl" aria-hidden="true">north_east</span>
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <p class="mt-5 text-xs leading-6 text-muted">
+          * 프로젝트 이미지는 핵심 구조를 설명하기 위한 콘셉트 그래픽입니다. 실제 서비스 화면은 아닙니다.
+        </p>
+
+        <noscript>
+          <p class="mt-4 rounded-xl border border-line p-4 text-sm">
+            프로젝트 필터와 상세 보기는 JavaScript를 활성화하면 사용할 수 있습니다.
+            주요 프로젝트 요약과 경력은 이 페이지에서 바로 확인할 수 있습니다.
+          </p>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- Working principles -->
+    <section id="approach" class="border-y border-line bg-white py-20">
+      <div class="shell">
+        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div>
+            <p class="eyebrow text-cobalt">HOW I WORK</p>
+            <h2 class="section-title mt-4">
+              문서에서 끝내지 않고,<br>
+              현장에서 확인합니다.
+            </h2>
+            <p class="mt-5 text-sm leading-7 text-muted">
+              좋은 서비스는 기능의 개수가 아니라,<br>
+              사용 흐름이 끊기지 않는 구조에서 나온다고 믿습니다.
+            </p>
+            <div class="mt-8 flex size-20 items-center justify-center rounded-full bg-lime">
+              <span class="material-symbols-rounded !text-4xl" aria-hidden="true">conversion_path</span>
+            </div>
+          </div>
+
+          <div class="grid gap-6 sm:grid-cols-2">
+            <article>
+              <span class="text-sm font-black text-cobalt">01 —</span>
+              <h3 class="mt-3 text-lg font-extrabold">흐름부터 정리합니다</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                기능 목록에 앞서 사용자 여정, 운영 동선, 데이터의 이동을 한 흐름으로 정리합니다.
+              </p>
+            </article>
+            <article>
+              <span class="text-sm font-black text-cobalt">02 —</span>
+              <h3 class="mt-3 text-lg font-extrabold">범위와 리스크를 나눕니다</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                표준 기능과 커스터마이징의 경계를 정의하고, 제약 조건 안에서 우선순위를 정합니다.
+              </p>
+            </article>
+            <article>
+              <span class="text-sm font-black text-cobalt">03 —</span>
+              <h3 class="mt-3 text-lg font-extrabold">예외까지 설계합니다</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                정상 흐름뿐 아니라 취소, 실패, 관리자 판단 지점을 상태값과 정책으로 구체화합니다.
+              </p>
+            </article>
+            <article>
+              <span class="text-sm font-black text-cobalt">04 —</span>
+              <h3 class="mt-3 text-lg font-extrabold">직접 만들고 검증합니다</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                필요하면 프로토타입과 운영 도구를 직접 구현합니다. 기술보다 실제 효과를 먼저 봅니다.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-20 lg:py-24">
+      <div class="shell">
+        <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div>
+            <p class="eyebrow text-cobalt">THE JOURNEY</p>
+            <h2 class="section-title mt-4">다양한 경험, 하나의 실행력.</h2>
+          </div>
+          <button id="print-button" type="button" class="btn no-print border border-line bg-white">
+            소개 페이지 인쇄
+            <span class="material-symbols-rounded text-xl" aria-hidden="true">print</span>
+          </button>
+        </div>
+
+        <div class="mt-10 border-t border-ink">
+          <article class="career-row grid gap-4 border-b border-line py-7 md:grid-cols-[190px_1fr] lg:grid-cols-[220px_1fr_180px]">
+            <div class="text-sm font-bold text-muted">
+              2024.10 — 현재
+              <span class="ml-2 inline-block size-2 rounded-full bg-cobalt"></span>
+            </div>
+            <div>
+              <h3 class="text-xl font-extrabold">농업회사법인 (주) 동해</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                오더프레쉬 자사몰 운영 구조 고도화 및 개편 기획.
+                주문 취합·송장·예외 처리 흐름 정리, 운영 도구 제작과 신규 사업 기획.
+              </p>
+            </div>
+            <p class="text-xs font-bold text-cobalt lg:text-right">서비스기획 / 운영 고도화 / PM</p>
+          </article>
+
+          <article class="career-row grid gap-4 border-b border-line py-7 md:grid-cols-[190px_1fr] lg:grid-cols-[220px_1fr_180px]">
+            <div class="text-sm font-bold text-muted">2018.01 — 2024.10</div>
+            <div>
+              <h3 class="text-xl font-extrabold">20FEET / INDM</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                커머스 구축과 운영 고도화, 신규 서비스 기획 총괄.
+                행복한바오밥 B2B 도매몰, 돈이요푸드, 다지(DARZII), 바로파크골프 프로젝트 수행.
+              </p>
+            </div>
+            <p class="text-xs font-bold text-cobalt lg:text-right">대표 / 서비스기획 총괄 / PM</p>
+          </article>
+
+          <article class="career-row grid gap-4 border-b border-line py-7 md:grid-cols-[190px_1fr] lg:grid-cols-[220px_1fr_180px]">
+            <div class="text-sm font-bold text-muted">2015.01 — 2016.12</div>
+            <div>
+              <h3 class="text-xl font-extrabold">엔토리 / 알트원 / 강게임즈</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                일본 퍼블리싱 서비스 구축 및 리빌딩, 스포츠 커뮤니티 사이트·앱 런칭.
+                사용자 기반 서비스의 운영 프로세스와 실시간 정보 연동 구조 설계.
+              </p>
+            </div>
+            <p class="text-xs font-bold text-cobalt lg:text-right">부장 / 팀장 / 운영 총괄</p>
+          </article>
+
+          <article class="career-row grid gap-4 border-b border-line py-7 md:grid-cols-[190px_1fr] lg:grid-cols-[220px_1fr_180px]">
+            <div class="text-sm font-bold text-muted">2009.02 — 2014.04</div>
+            <div>
+              <h3 class="text-xl font-extrabold">가비아 / 가비아 C&amp;S</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                퍼스트몰 3.0 개발 참여, 쇼핑맵·소셜매니저 런칭.
+                전자랜드·스와로브스키 쇼핑몰 구축과 코리아나 제니스웰 리뉴얼 등 수행.
+              </p>
+            </div>
+            <p class="text-xs font-bold text-cobalt lg:text-right">과장 / 팀장 / 서비스 설계</p>
+          </article>
+
+          <article class="career-row grid gap-4 border-b border-line py-7 md:grid-cols-[190px_1fr] lg:grid-cols-[220px_1fr_180px]">
+            <div class="text-sm font-bold text-muted">2005 — 2008</div>
+            <div>
+              <h3 class="text-xl font-extrabold">개발에서 시작된 커리어</h3>
+              <p class="mt-2 text-sm leading-7 text-muted">
+                유치원 원아관리 솔루션 직접 제작·판매, 감성포털 싸이젬 PM, 쇼핑몰 제작.
+                개발과 기획, 운영, 영업을 함께 경험하며 실행의 기본기를 쌓았습니다.
+              </p>
+            </div>
+            <p class="text-xs font-bold text-cobalt lg:text-right">개발 / 기획 / 운영</p>
+          </article>
+        </div>
+        <p class="mt-4 text-xs text-muted">재직 현황은 제공된 이력서 기준입니다.</p>
+
+        <!-- Maker & toolkit -->
+        <div class="mt-12 grid gap-5 lg:grid-cols-[1.2fr_1fr]">
+          <article class="relative overflow-hidden rounded-3xl bg-lilac p-7 sm:p-9">
+            <div class="relative z-10 max-w-md">
+              <p class="eyebrow text-ink/65">BEYOND THE SCREEN</p>
+              <h3 class="mt-5 text-2xl font-extrabold tracking-tight">
+                화면 밖에서도,<br>직접 만드는 사람.
+              </h3>
+              <p class="mt-4 max-w-sm text-sm leading-7 text-ink/75">
+                CNC 라우터와 3D 프린터를 직접 제작하고 제어 구조까지 구현했습니다.
+                낯선 문제도 구조를 이해하고, 만들고, 검증하는 방식으로 접근합니다.
+              </p>
+              <span class="pill mt-5 bg-white/40">Hardware / Maker Experience</span>
+            </div>
+            <span class="material-symbols-rounded absolute -bottom-6 -right-5 !text-[170px] text-cobalt/15" aria-hidden="true">precision_manufacturing</span>
+          </article>
+
+          <article class="rounded-3xl border border-line bg-white p-7 sm:p-9">
+            <p class="eyebrow text-muted">TOOLS &amp; FOUNDATION</p>
+            <h3 class="mt-5 text-2xl font-extrabold tracking-tight">구현을 이해하는 기획의 도구들</h3>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="pill bg-paper">PHP</span>
+              <span class="pill bg-paper">Node.js</span>
+              <span class="pill bg-paper">Figma</span>
+              <span class="pill bg-paper">Google Workspace</span>
+              <span class="pill bg-paper">퍼스트몰</span>
+              <span class="pill bg-paper">바이브코딩</span>
+            </div>
+            <div class="mt-6 space-y-2 border-t border-line pt-5 text-xs leading-6 text-muted">
+              <p>경희사이버대학교 컴퓨터인터넷공학 학사 · 2016.03</p>
+              <p>경남정보올림피아드 금상 · 2005</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="relative overflow-hidden bg-lime py-20 lg:py-24">
+      <div class="shell relative z-10">
+        <div class="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-end">
+          <div>
+            <p class="eyebrow">
+              <span class="material-symbols-rounded text-lg" aria-hidden="true">chat_bubble</span>
+              LET’S MAKE IT WORK
+            </p>
+            <h2 class="mt-5 text-[clamp(2.5rem,5.4vw,4.7rem)] font-black leading-[1.15] tracking-[-0.06em]">
+              함께 풀어볼 문제가<br>
+              있으신가요<span class="text-cobalt">?</span>
+            </h2>
+            <p class="mt-6 text-base leading-8 text-ink/75">
+              복잡한 요구사항을 정리할 때도, 새로운 서비스를 시작할 때도.<br class="hidden sm:block">
+              기획과 실행 사이를 연결하겠습니다.
+            </p>
+          </div>
+
+          <div class="rounded-3xl border border-ink/10 bg-white/55 p-6 sm:p-8">
+            <p class="text-xs font-extrabold tracking-widest text-ink/60">SAY HELLO</p>
+            <a href="mailto:mutzero@gmail.com" class="mt-3 inline-flex items-center gap-2 break-all text-2xl font-black tracking-tight hover:text-cobalt sm:text-3xl">
+              mutzero@gmail.com
+              <span class="material-symbols-rounded" aria-hidden="true">north_east</span>
+            </a>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              <a href="mailto:mutzero@gmail.com" class="btn bg-ink text-white hover:bg-cobalt">
+                메일 보내기
+                <span class="material-symbols-rounded text-lg" aria-hidden="true">mail</span>
+              </a>
+              <button id="copy-email" type="button" class="btn no-print border border-ink/20 bg-white/50">
+                이메일 복사
+                <span class="material-symbols-rounded text-lg" aria-hidden="true">content_copy</span>
+              </button>
+            </div>
+
+            <div class="mt-6 space-y-3 border-t border-ink/15 pt-5 text-sm font-semibold">
+              <a href="tel:+821026597306" class="flex min-h-8 items-center gap-2 hover:text-cobalt">
+                <span class="material-symbols-rounded text-lg" aria-hidden="true">call</span>
+                010-2659-7306
+              </a>
+              <p class="flex items-center gap-2 text-ink/65">
+                <span class="material-symbols-rounded text-lg" aria-hidden="true">location_on</span>
+                경남 김해시 · 전국 근무 협의 가능
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="starburst pointer-events-none absolute -left-32 -top-36 size-96 bg-white/20" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-ink py-7 text-white">
+    <div class="shell flex flex-col items-start justify-between gap-5 text-xs sm:flex-row sm:items-center">
+      <p class="font-bold tracking-wide">© <span id="year">2026</span> CHOI BYEONG CHEOL.</p>
+      <p class="text-white/55">기획, 개발, 운영을 연결해 실행 가능한 구조를 만듭니다.</p>
+      <a href="#home" class="no-print flex min-h-10 items-center gap-2 font-bold text-lime">
+        BACK TO TOP
+        <span class="material-symbols-rounded text-lg" aria-hidden="true">north</span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Accessible project dialog -->
+  <dialog id="project-dialog" class="fixed inset-0 m-auto max-h-[88dvh] w-[calc(100%-2rem)] max-w-3xl
+           overflow-y-auto overscroll-contain rounded-3xl shadow-2xl" aria-labelledby="dialog-title" aria-describedby="dialog-summary">
+    <div class="sticky top-0 z-10 flex items-center justify-between border-b border-line bg-paper/95 px-6 py-4 backdrop-blur-md sm:px-8">
+      <span class="text-xs font-extrabold tracking-[0.15em] text-cobalt">PROJECT NOTES</span>
+      <button id="dialog-close" type="button" autofocus="" class="flex size-11 items-center justify-center rounded-full border border-line bg-white transition hover:bg-lime" aria-label="프로젝트 상세 닫기">
+        <span class="material-symbols-rounded" aria-hidden="true">close</span>
+      </button>
+    </div>
+
+    <div class="p-6 sm:p-9">
+      <span id="dialog-category" class="pill bg-lime"></span>
+      <h2 id="dialog-title" class="mt-5 text-3xl font-black tracking-tight sm:text-4xl"></h2>
+      <p id="dialog-summary" class="mt-4 text-base leading-8 text-muted"></p>
+
+      <div class="mt-6 rounded-2xl bg-ink p-5 text-white">
+        <p class="text-[10px] font-extrabold tracking-widest text-lime">MY ROLE</p>
+        <p id="dialog-role" class="mt-2 text-sm font-semibold leading-7"></p>
+      </div>
+
+      <div id="dialog-sections" class="mt-8 space-y-7"></div>
+
+      <div class="mt-8 border-t border-line pt-5 text-xs leading-6 text-muted">
+        제공된 경력기술서와 포트폴리오를 바탕으로 정리했습니다.
+        확인되지 않은 성과 수치는 기재하지 않았습니다.
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Live notification -->
+  <div id="toast" role="status" aria-live="polite" aria-atomic="true" data-visible="false" class="no-print fixed bottom-6 left-1/2 z-[70] w-max max-w-[calc(100%-2rem)]
+           rounded-2xl bg-ink px-5 py-4 text-center text-sm font-bold text-white shadow-xl"></div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      // Footer date
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Mobile navigation
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+
+      function setMenu(open) {
+        mobileMenu.hidden = !open;
+        menuToggle.setAttribute("aria-expanded", String(open));
+        menuToggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+        menuIcon.textContent = open ? "close" : "menu";
+      }
+
+      menuToggle.addEventListener("click", () => {
+        setMenu(menuToggle.getAttribute("aria-expanded") !== "true");
+      });
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => setMenu(false));
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !mobileMenu.hidden) {
+          setMenu(false);
+          menuToggle.focus();
+        }
+      });
+
+      const desktopQuery = window.matchMedia("(min-width: 768px)");
+      desktopQuery.addEventListener("change", (event) => {
+        if (event.matches) setMenu(false);
+      });
+
+      // Project filters
+      const filters = [...document.querySelectorAll("[data-filter]")];
+      const cards = [...document.querySelectorAll(".project-card")];
+      const filterStatus = document.getElementById("filter-status");
+
+      filters.forEach((button) => {
+        button.addEventListener("click", () => {
+          const category = button.dataset.filter;
+          let count = 0;
+
+          filters.forEach((filter) => {
+            filter.setAttribute("aria-pressed", String(filter === button));
+          });
+
+          cards.forEach((card) => {
+            const visible = category === "all" || card.dataset.category === category;
+            card.hidden = !visible;
+            if (visible) count += 1;
+          });
+
+          const label = category === "all" ? "전체" : button.textContent.trim();
+          filterStatus.textContent = `${label} 프로젝트 ${count}개 표시 중`;
+        });
+      });
+
+      // Project details: based only on provided documents
+      const projects = {
+        orderfresh: {
+          title: "오더프레쉬",
+          category: "운영 고도화 / 바이브코딩",
+          summary:
+            "기능을 더하기 전에 운영의 병목을 먼저 살폈습니다. 주문 취합과 운영 정보 구조를 정리하고, 필요한 도구를 직접 구현하며 사업 확장 방향까지 구체화했습니다.",
+          role: "운영 진단 · 주문 취합 프로그램 및 대시보드 구현 · 사업계획서 작성 · 신규 사업 기획",
+          sections: [
+            {
+              title: "문제와 맥락",
+              icon: "search",
+              items: [
+                "주문 취합 과정의 수기 처리와 반복 업무가 운영의 병목으로 이어졌습니다.",
+                "주문·송장·예외 처리 흐름을 함께 정리하고, 상품 확장에 대응할 운영 구조가 필요했습니다."
+              ]
+            },
+            {
+              title: "접근과 실행",
+              icon: "construction",
+              items: [
+                "사방넷 연동 기반의 처리 흐름과 운영 구조를 정리했습니다.",
+                "바이브코딩으로 주문 취합 프로그램과 운영 대시보드를 직접 제작했습니다.",
+                "자사몰 개편과 함께 소포장 골라담기, 제철 장보기 등 신규 사업 방향을 사업계획서로 구체화했습니다."
+              ]
+            },
+            {
+              title: "결과와 의미",
+              icon: "task_alt",
+              items: [
+                "반복 업무를 줄이고 운영 상태를 더 빠르게 파악할 수 있는 구조를 만들었습니다.",
+                "운영 효율 개선과 비즈니스 확장 방향을 별개가 아닌 하나의 설계 과제로 다뤘습니다."
+              ]
+            }
+          ]
+        },
+
+        firstmall: {
+          title: "가비아 퍼스트몰",
+          category: "상용 커머스 / 구조 설계",
+          summary:
+            "퍼스트몰 개발에 참여해 여러 상점이 공통으로 사용하는 회원·제휴·관리자 흐름을 정리했습니다. 기능의 확장보다 운영 기준과 예외 처리의 일관성에 집중했습니다.",
+          role: "회원·제휴 기획 · 프로세스 정의 · 엔진 개발",
+          sections: [
+            {
+              title: "문제와 맥락",
+              icon: "search",
+              items: [
+                "상용 솔루션은 하나의 상점이 아니라 여러 상점에 반복 적용할 수 있는 구조가 필요했습니다.",
+                "회원, 제휴, 관리자 흐름이 혼재하면 운영 복잡도와 예외 상황이 커질 수 있었습니다."
+              ]
+            },
+            {
+              title: "핵심 판단",
+              icon: "account_tree",
+              items: [
+                "각 주체의 이용 흐름과 운영 책임을 구분했습니다.",
+                "운영자가 판단해야 하는 지점과 시스템이 처리해야 하는 지점을 나눴습니다.",
+                "운영 리스크를 고려한 예외 처리 기준과 반복 가능한 프로세스를 정리했습니다."
+              ]
+            },
+            {
+              title: "이후 프로젝트에 남은 기준",
+              icon: "task_alt",
+              items: [
+                "상용 솔루션의 표준 기능과 커스터마이징 범위를 구분하는 기반이 됐습니다.",
+                "이후 퍼스트몰 기반 구축 프로젝트에서 요구사항을 실제 운영 가능한 구조로 전환하는 기준으로 활용했습니다."
+              ]
+            }
+          ]
+        },
+
+        shoppingmap: {
+          title: "쇼핑맵 · 소셜매니저",
+          category: "플랫폼 / 데이터 구조 표준화",
+          summary:
+            "서로 다른 제휴처의 상품 정보를 일관된 데이터로 정리하고, 내부 서비스와 외부 공급에 활용할 수 있는 흐름을 설계했습니다.",
+          role: "UX 기획 · 데이터 및 서비스 구조 설계 · 개발 리딩",
+          sections: [
+            {
+              title: "문제와 맥락",
+              icon: "search",
+              items: [
+                "소셜커머스 제휴처마다 상품 정보의 형식과 구조가 달랐습니다.",
+                "수집한 정보를 사용자에게 비교하기 쉽게 보여주면서, 운영과 외부 고객사 공급에도 활용해야 했습니다."
+              ]
+            },
+            {
+              title: "접근과 실행",
+              icon: "database",
+              items: [
+                "XML, JSON, HTML, CSV 등 다양한 형식의 데이터를 일관된 구조로 변환했습니다.",
+                "불필요한 값 제거, 중복 필터링, 우선순위 및 사용자 화면에 맞춘 재배열 흐름을 설계했습니다.",
+                "오프라인 쿠폰의 소비 특성에 맞춰 지역별 이벤트를 탐색하는 지도 기반 서비스를 기획했습니다."
+              ]
+            },
+            {
+              title: "결과와 의미",
+              icon: "task_alt",
+              items: [
+                "정리한 데이터는 실제 운영업체와 고객사에 공급됐으며, 주요 고객사에는 KTH와 삼성SDS가 있었습니다.",
+                "쇼핑맵은 랭키닷컴 9위를 기록했으며, 급격한 트래픽 증가에 대응한 경험을 쌓았습니다.",
+                "화면 설계에 앞서 데이터 흐름과 운영 구조가 정리되어야 한다는 기준을 얻었습니다."
+              ]
+            }
+          ]
+        },
+
+        study: {
+          title: "공부선배마켓",
+          category: "커머스 / 정책 설계와 구현",
+          summary:
+            "서비스 요구사항을 사용자 흐름과 운영 정책으로 구체화하고, 화면 설계부터 개발·일정 조율까지 연결한 프로젝트입니다.",
+          role: "기획 · 정책 정의 · 화면 및 개발 산출물 작성 · 개발 · 일정 조율",
+          sections: [
+            {
+              title: "문제와 맥락",
+              icon: "search",
+              items: [
+                "서비스 목적에 맞는 메뉴 구조와 이용 흐름을 정의할 필요가 있었습니다.",
+                "퍼스트몰의 기존 구조를 이해한 상태에서 필요한 요구사항을 커스터마이징해야 했습니다."
+              ]
+            },
+            {
+              title: "접근과 실행",
+              icon: "assignment",
+              items: [
+                "사용자 흐름을 기준으로 화면 설계와 정책 구현을 연결했습니다.",
+                "WBS, 화면 설계, 개발 산출물, 테스트·QA 자료로 실행 기준을 정리했습니다.",
+                "선행 정책, 구현 우선순위, 예외 사항을 문서화해 운영 단계의 혼선을 줄이고자 했습니다."
+              ]
+            },
+            {
+              title: "결과와 의미",
+              icon: "task_alt",
+              items: [
+                "기획 문서 작성에 머무르지 않고 요구사항을 실제 서비스로 구현했습니다.",
+                "정책, 화면, 개발 일정이 분리되지 않도록 구조와 실행을 함께 조율했습니다."
+              ]
+            }
+          ]
+        },
+
+        parkgolf: {
+          title: "바로파크골프",
+          category: "0 → 1 / 서비스 프로토타입",
+          summary:
+            "시니어 사용자를 위한 파크골프 스코어 서비스를 기획했습니다. 실제 사용 환경을 기준으로 문제를 정의하고 서비스 프로토타입까지 직접 구체화했습니다.",
+          role: "문제 정의 · UX 기획 · 서비스 구조 설계 · 프로토타입 제작",
+          sections: [
+            {
+              title: "문제와 설계 기준",
+              icon: "search",
+              items: [
+                "시니어 사용자가 이해하기 쉬운 직관적인 이용 흐름을 우선했습니다.",
+                "실제 야외 사용 환경을 고려해 오프라인 환경 대응을 주요 설계 기준으로 삼았습니다."
+              ]
+            },
+            {
+              title: "접근과 실행",
+              icon: "draw",
+              items: [
+                "문제 정의부터 서비스 구조 설계, 프로토타입 제작까지 전 과정을 주도했습니다.",
+                "Figma와 Google Workspace를 활용해 화면 설계, 문서 협업, 피드백 정리 방식을 체계화했습니다."
+              ]
+            },
+            {
+              title: "도달 단계와 의미",
+              icon: "flag",
+              items: [
+                "정식 출시까지 이어지지는 않았으며, 프로토타입 단계까지 진행한 프로젝트입니다.",
+                "새로운 시장의 사용자 문제를 서비스 구조와 협업 가능한 산출물로 구체화했습니다."
+              ]
+            }
+          ]
+        }
+      };
+
+      const dialog = document.getElementById("project-dialog");
+      const dialogClose = document.getElementById("dialog-close");
+      const dialogSections = document.getElementById("dialog-sections");
+      let lastTrigger = null;
+      let previousOverflow = "";
+
+      function openProject(key, trigger) {
+        const project = projects[key];
+        if (!project) return;
+
+        lastTrigger = trigger;
+        document.getElementById("dialog-title").textContent = project.title;
+        document.getElementById("dialog-category").textContent = project.category;
+        document.getElementById("dialog-summary").textContent = project.summary;
+        document.getElementById("dialog-role").textContent = project.role;
+        dialogSections.replaceChildren();
+
+        project.sections.forEach((section) => {
+          const container = document.createElement("section");
+          const heading = document.createElement("h3");
+          heading.className = "flex items-center gap-2 text-lg font-extrabold";
+
+          const icon = document.createElement("span");
+          icon.className = "material-symbols-rounded text-xl text-cobalt";
+          icon.setAttribute("aria-hidden", "true");
+          icon.textContent = section.icon;
+
+          heading.append(icon, document.createTextNode(section.title));
+
+          const list = document.createElement("ul");
+          list.className = "mt-3 space-y-3";
+
+          section.items.forEach((text) => {
+            const item = document.createElement("li");
+            item.className = "flex items-start gap-3 text-sm leading-7 text-muted";
+
+            const bullet = document.createElement("span");
+            bullet.className = "mt-3 size-1.5 shrink-0 rounded-full bg-cobalt";
+            bullet.setAttribute("aria-hidden", "true");
+
+            const paragraph = document.createElement("span");
+            paragraph.textContent = text;
+
+            item.append(bullet, paragraph);
+            list.append(item);
+          });
+
+          container.append(heading, list);
+          dialogSections.append(container);
+        });
+
+        previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        dialog.showModal();
+        dialog.scrollTop = 0;
+      }
+
+      document.querySelectorAll("[data-project]").forEach((button) => {
+        button.addEventListener("click", () => {
+          openProject(button.dataset.project, button);
+        });
+      });
+
+      dialogClose.addEventListener("click", () => dialog.close());
+
+      // Close only when the backdrop itself was clicked.
+      let pointerStartedOutside = false;
+
+      function isOutsideDialog(event) {
+        const rect = dialog.getBoundingClientRect();
+        return (
+          event.clientX < rect.left ||
+          event.clientX > rect.right ||
+          event.clientY < rect.top ||
+          event.clientY > rect.bottom
+        );
+      }
+
+      dialog.addEventListener("pointerdown", (event) => {
+        pointerStartedOutside = event.target === dialog && isOutsideDialog(event);
+      });
+
+      dialog.addEventListener("click", (event) => {
+        if (
+          pointerStartedOutside &&
+          event.target === dialog &&
+          isOutsideDialog(event)
+        ) {
+          dialog.close();
+        }
+        pointerStartedOutside = false;
+      });
+
+      dialog.addEventListener("close", () => {
+        document.body.style.overflow = previousOverflow;
+        if (lastTrigger) lastTrigger.focus({ preventScroll: true });
+      });
+
+      // Toast
+      const toast = document.getElementById("toast");
+      let toastTimer;
+
+      function showToast(message) {
+        clearTimeout(toastTimer);
+        toast.textContent = message;
+        toast.dataset.visible = "true";
+        toastTimer = setTimeout(() => {
+          toast.dataset.visible = "false";
+        }, 3500);
+      }
+
+      // Clipboard with a fallback for local file / unsupported contexts
+      async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch {
+            // Try the local-file fallback below.
+          }
+        }
+
+        const activeElement = document.activeElement;
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.left = "-9999px";
+        textarea.style.top = "0";
+        document.body.append(textarea);
+        textarea.select();
+
+        let copied = false;
+        try {
+          copied = document.execCommand("copy");
+        } catch {
+          copied = false;
+        } finally {
+          textarea.remove();
+          if (activeElement instanceof HTMLElement) {
+            activeElement.focus({ preventScroll: true });
+          }
+        }
+        return copied;
+      }
+
+      document.getElementById("copy-email").addEventListener("click", async () => {
+        const copied = await copyText("mutzero@gmail.com");
+        showToast(
+          copied
+            ? "이메일 주소를 복사했습니다."
+            : "자동 복사가 지원되지 않습니다. mutzero@gmail.com을 직접 복사해 주세요."
+        );
+      });
+
+      document.getElementById("print-button").addEventListener("click", () => {
+        window.print();
+      });
+    })();
+  </script>
+
+
+</body></html>

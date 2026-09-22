@@ -1,0 +1,714 @@
+<!DOCTYPE html><html lang="ko" class="scroll-smooth"><head><meta name="x-poe-datastore-behavior" content="local_only"><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최병철 | Platform · Product · Execution PM</title>
+  <meta name="description" content="기획, 개발, 운영을 연결해 실행 가능한 구조를 만드는 개발자 출신 이커머스 PM 최병철의 포트폴리오">
+
+  <!-- SUITE Font -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE/fonts/static/woff2/SUITE.css">
+  <!-- Google Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { suite: ['SUITE', 'sans-serif'] },
+          colors: {
+            ink: '#0B0B1A',
+            vivid: {
+              violet: '#7C3AED',
+              pink: '#FF2E93',
+              orange: '#FF7A00',
+              lime: '#C6FF00',
+              cyan: '#00E0FF',
+              blue: '#3B5BFF',
+            },
+          },
+          animation: {
+            marquee: 'marquee 30s linear infinite',
+            float: 'float 6s ease-in-out infinite',
+            blob: 'blob 12s ease-in-out infinite',
+          },
+          keyframes: {
+            marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
+            float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } },
+            blob: {
+              '0%,100%': { transform: 'translate(0,0) scale(1)' },
+              '33%': { transform: 'translate(40px,-30px) scale(1.1)' },
+              '66%': { transform: 'translate(-30px,20px) scale(0.95)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: 'SUITE', sans-serif; word-break: keep-all; }
+    .material-symbols-rounded { font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+    .icon-line { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .text-gradient { background: linear-gradient(90deg,#7C3AED,#FF2E93,#FF7A00); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .reveal { opacity: 0; transform: translateY(32px); transition: all .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal.show { opacity: 1; transform: none; }
+    .grid-bg {
+      background-image: linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+  </style>
+</head>
+<body class="bg-[#F7F5FF] text-ink antialiased selection:bg-vivid-pink selection:text-white">
+
+  <!-- ================= NAV ================= -->
+  <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <nav class="mt-4 flex items-center justify-between rounded-2xl bg-white/70 backdrop-blur-xl border border-white shadow-lg shadow-violet-500/5 px-5 py-3">
+        <a href="#home" class="flex items-center gap-2 font-extrabold text-lg">
+          <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-vivid-violet via-vivid-pink to-vivid-orange text-white">
+            <span class="material-symbols-rounded text-[20px]">hub</span>
+          </span>
+          CHOI<span class="text-vivid-pink">.</span>PM
+        </a>
+        <ul class="hidden md:flex items-center gap-1 text-sm font-semibold">
+          <li><a href="#about" class="nav-link px-4 py-2 rounded-xl hover:bg-violet-50 hover:text-vivid-violet transition">About</a></li>
+          <li><a href="#career" class="nav-link px-4 py-2 rounded-xl hover:bg-violet-50 hover:text-vivid-violet transition">Career</a></li>
+          <li><a href="#projects" class="nav-link px-4 py-2 rounded-xl hover:bg-violet-50 hover:text-vivid-violet transition">Projects</a></li>
+          <li><a href="#style" class="nav-link px-4 py-2 rounded-xl hover:bg-violet-50 hover:text-vivid-violet transition">Style</a></li>
+        </ul>
+        <a href="#contact" class="hidden md:inline-flex items-center gap-1.5 bg-ink text-white text-sm font-bold px-4 py-2.5 rounded-xl hover:bg-vivid-violet transition">
+          <span class="material-symbols-rounded text-[18px]">mail</span> Contact
+        </a>
+        <button id="menuBtn" class="md:hidden grid place-items-center w-10 h-10 rounded-xl hover:bg-violet-50" aria-label="메뉴 열기">
+          <span class="material-symbols-rounded">menu</span>
+        </button>
+      </nav>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden mt-2 rounded-2xl bg-white/95 backdrop-blur-xl border border-white shadow-xl p-3">
+        <a href="#about" class="m-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-violet-50 font-semibold"><span class="material-symbols-rounded text-vivid-violet">person</span>About</a>
+        <a href="#career" class="m-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-violet-50 font-semibold"><span class="material-symbols-rounded text-vivid-pink">timeline</span>Career</a>
+        <a href="#projects" class="m-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-violet-50 font-semibold"><span class="material-symbols-rounded text-vivid-orange">deployed_code</span>Projects</a>
+        <a href="#style" class="m-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-violet-50 font-semibold"><span class="material-symbols-rounded text-vivid-blue">psychology</span>Style</a>
+        <a href="#contact" class="m-link flex items-center gap-3 px-4 py-3 rounded-xl bg-ink text-white font-semibold mt-1"><span class="material-symbols-rounded">mail</span>Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section id="home" class="relative min-h-screen overflow-hidden bg-ink text-white pt-32 pb-20">
+    <div class="absolute inset-0 grid-bg"></div>
+    <div class="absolute -top-32 -left-32 w-[520px] h-[520px] rounded-full bg-vivid-violet/60 blur-[120px] animate-blob"></div>
+    <div class="absolute top-20 right-[-120px] w-[460px] h-[460px] rounded-full bg-vivid-pink/50 blur-[120px] animate-blob [animation-delay:3s]"></div>
+    <div class="absolute bottom-[-160px] left-1/3 w-[480px] h-[480px] rounded-full bg-vivid-orange/40 blur-[120px] animate-blob [animation-delay:6s]"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7">
+        <div class="reveal inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur px-4 py-1.5 text-sm font-semibold">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-vivid-lime opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-vivid-lime"></span>
+          </span>
+          The Practical Innovator
+        </div>
+
+        <h1 class="reveal mt-6 text-4xl sm:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight">
+          기능보다<br>
+          <span class="bg-gradient-to-r from-vivid-lime via-vivid-cyan to-vivid-pink bg-clip-text text-transparent">흐름을 먼저</span><br>
+          설계합니다.
+        </h1>
+
+        <p class="reveal mt-6 text-lg md:text-xl text-white/70 leading-relaxed max-w-2xl">
+          기획, 개발, 운영을 연결해 <strong class="text-white">실행 가능한 구조</strong>를 만드는 사람.<br class="hidden sm:block">
+          서비스기획을 바탕으로 구축·운영·고도화까지 리드하는 개발자 출신 이커머스 PM <strong class="text-white">최병철</strong>입니다.
+        </p>
+
+        <div class="reveal mt-8 flex flex-wrap gap-3">
+          <a href="#projects" class="group inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-vivid-violet via-vivid-pink to-vivid-orange px-6 py-4 font-bold shadow-xl shadow-pink-500/30 hover:scale-[1.03] transition">
+            프로젝트 보기
+            <span class="material-symbols-rounded group-hover:translate-x-1 transition">arrow_forward</span>
+          </a>
+          <a href="mailto:mutzero@gmail.com" class="inline-flex items-center gap-2 rounded-2xl border border-white/25 bg-white/5 backdrop-blur px-6 py-4 font-bold hover:bg-white hover:text-ink transition">
+            <span class="material-symbols-rounded">send</span> 연락하기
+          </a>
+        </div>
+
+        <div class="reveal mt-12 grid grid-cols-3 max-w-lg gap-4">
+          <div>
+            <div class="text-3xl md:text-4xl font-black"><span class="counter" data-target="20">0</span><span class="text-vivid-lime">+</span></div>
+            <div class="text-xs md:text-sm text-white/60 mt-1">Years of Experience</div>
+          </div>
+          <div>
+            <div class="text-3xl md:text-4xl font-black"><span class="counter" data-target="5">0</span><span class="text-vivid-pink">+</span></div>
+            <div class="text-xs md:text-sm text-white/60 mt-1">Key Projects</div>
+          </div>
+          <div>
+            <div class="text-3xl md:text-4xl font-black"><span class="counter" data-target="9">0</span><span class="text-vivid-orange">위</span></div>
+            <div class="text-xs md:text-sm text-white/60 mt-1">쇼핑맵 랭키닷컴</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile card -->
+      <div class="lg:col-span-5 reveal">
+        <div class="relative mx-auto max-w-sm animate-float">
+          <div class="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-vivid-lime via-vivid-pink to-vivid-violet blur opacity-80"></div>
+          <div class="relative rounded-[2rem] bg-ink/90 border border-white/10 p-7">
+            <!-- 사진으로 교체하려면 아래 div를 <img src="..." class="w-full aspect-square object-cover rounded-3xl"> 로 바꾸세요 -->
+            <div class="aspect-square rounded-3xl bg-gradient-to-br from-vivid-violet via-vivid-pink to-vivid-orange grid place-items-center overflow-hidden relative">
+              <span class="text-[140px] font-black text-white/90 leading-none">최</span>
+              <span class="absolute bottom-4 right-4 inline-flex items-center gap-1 rounded-full bg-black/30 backdrop-blur px-3 py-1 text-xs font-bold">
+                <span class="material-symbols-rounded text-[16px] text-vivid-lime">verified</span> Execution PM
+              </span>
+            </div>
+            <div class="mt-6">
+              <div class="text-2xl font-black">최병철 <span class="text-white/50 text-base font-semibold">CHOI BYEONG CHEOL</span></div>
+              <div class="mt-1 text-white/60 text-sm">Platform / Product / Execution PM</div>
+            </div>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <span class="rounded-full bg-vivid-violet/20 text-violet-200 px-3 py-1 text-xs font-bold">서비스기획</span>
+              <span class="rounded-full bg-vivid-pink/20 text-pink-200 px-3 py-1 text-xs font-bold">커머스 구조</span>
+              <span class="rounded-full bg-vivid-orange/20 text-orange-200 px-3 py-1 text-xs font-bold">운영 고도화</span>
+              <span class="rounded-full bg-vivid-lime/20 text-lime-200 px-3 py-1 text-xs font-bold">바이브코딩</span>
+            </div>
+            <div class="mt-5 flex items-center gap-2 text-sm text-white/60">
+              <span class="material-symbols-rounded text-[18px] text-vivid-cyan">location_on</span> 경남 김해시 · 전국 협의 가능
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marquee -->
+    <div class="relative mt-20 border-y border-white/10 bg-white/5 backdrop-blur py-5 overflow-hidden">
+      <div class="flex w-max animate-marquee gap-10 text-xl md:text-2xl font-extrabold whitespace-nowrap">
+        <div class="flex gap-10 items-center">
+          <span>서비스기획</span><span class="material-symbols-rounded text-vivid-lime">star</span>
+          <span>User Flow / UI·UX</span><span class="material-symbols-rounded text-vivid-pink">star</span>
+          <span>주문·결제·클레임 운영정책</span><span class="material-symbols-rounded text-vivid-orange">star</span>
+          <span>B2B 서비스 고도화</span><span class="material-symbols-rounded text-vivid-cyan">star</span>
+          <span>PHP · Node.js</span><span class="material-symbols-rounded text-vivid-lime">star</span>
+          <span>Vibe Coding</span><span class="material-symbols-rounded text-vivid-pink">star</span>
+        </div>
+        <div class="flex gap-10 items-center" aria-hidden="true">
+          <span>서비스기획</span><span class="material-symbols-rounded text-vivid-lime">star</span>
+          <span>User Flow / UI·UX</span><span class="material-symbols-rounded text-vivid-pink">star</span>
+          <span>주문·결제·클레임 운영정책</span><span class="material-symbols-rounded text-vivid-orange">star</span>
+          <span>B2B 서비스 고도화</span><span class="material-symbols-rounded text-vivid-cyan">star</span>
+          <span>PHP · Node.js</span><span class="material-symbols-rounded text-vivid-lime">star</span>
+          <span>Vibe Coding</span><span class="material-symbols-rounded text-vivid-pink">star</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT / HOW I WORK ================= -->
+  <section id="about" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="grid lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-5 reveal">
+          <span class="inline-flex items-center gap-2 text-sm font-extrabold text-vivid-violet uppercase tracking-widest">
+            <span class="material-symbols-rounded">waving_hand</span> About Me
+          </span>
+          <h2 class="mt-4 text-3xl md:text-5xl font-black leading-tight">
+            화면만 그리는 기획자가 아니라,<br>
+            <span class="text-gradient">결과까지 연결하는 PM</span>
+          </h2>
+        </div>
+        <div class="lg:col-span-7 reveal space-y-5 text-lg text-slate-600 leading-relaxed">
+          <p>
+            개발자로 커리어를 시작해 서비스기획과 PM 역할로 확장하며, <strong class="text-ink">상용 커머스 솔루션, 엔터프라이즈 쇼핑몰 구축, 자사몰 운영 고도화</strong>까지 경험해왔습니다.
+          </p>
+          <p>
+            제가 이해하는 서비스기획은 단순히 화면을 정의하는 역할이 아니라, <strong class="text-ink">사용자 흐름과 운영 흐름을 함께 설계</strong>하고 개발·디자인·운영과 협업해 실제 서비스로 구현되도록 연결하는 역할입니다.
+          </p>
+          <p>
+            퍼스트몰 3.0, 쇼핑맵·소셜매니저, 전자랜드·스와로브스키 쇼핑몰 구축, 오더프레쉬 운영 구조 설계 등을 거치며 <strong class="text-ink">주문·결제·송장·취소·교환·클레임·어드민 정책</strong>까지 포함한 서비스 구조를 설계해 왔습니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- How I Work -->
+      <div class="mt-20">
+        <div class="reveal flex items-end justify-between flex-wrap gap-4">
+          <h3 class="text-2xl md:text-3xl font-black">How I Work</h3>
+          <p class="text-slate-500 font-medium">좋은 서비스는 기능보다 사용 흐름이 끊기지 않는 구조에서 나옵니다.</p>
+        </div>
+        <div class="mt-8 grid md:grid-cols-3 gap-5">
+          <div class="reveal group relative rounded-3xl bg-white p-8 border border-violet-100 shadow-sm hover:shadow-2xl hover:shadow-violet-500/20 hover:-translate-y-2 transition duration-300 overflow-hidden">
+            <div class="absolute -right-6 -top-6 text-[120px] font-black text-violet-50 leading-none select-none">01</div>
+            <div class="relative w-14 h-14 rounded-2xl bg-vivid-violet text-white grid place-items-center shadow-lg shadow-violet-500/40 group-hover:rotate-6 transition">
+              <span class="material-symbols-rounded text-[28px]">account_tree</span>
+            </div>
+            <h4 class="relative mt-6 text-xl font-extrabold">서비스 흐름 정리</h4>
+            <p class="relative mt-3 text-slate-600 leading-relaxed">요구사항을 화면보다 사용자와 운영 흐름으로 먼저 정리합니다.</p>
+          </div>
+          <div class="reveal group relative rounded-3xl bg-white p-8 border border-pink-100 shadow-sm hover:shadow-2xl hover:shadow-pink-500/20 hover:-translate-y-2 transition duration-300 overflow-hidden">
+            <div class="absolute -right-6 -top-6 text-[120px] font-black text-pink-50 leading-none select-none">02</div>
+            <div class="relative w-14 h-14 rounded-2xl bg-vivid-pink text-white grid place-items-center shadow-lg shadow-pink-500/40 group-hover:rotate-6 transition">
+              <span class="material-symbols-rounded text-[28px]">shield_lock</span>
+            </div>
+            <h4 class="relative mt-6 text-xl font-extrabold">리스크 및 범위 고정</h4>
+            <p class="relative mt-3 text-slate-600 leading-relaxed">표준 기능, 커스터마이징, 운영 리스크를 구분해 범위와 우선순위를 정합니다.</p>
+          </div>
+          <div class="reveal group relative rounded-3xl bg-white p-8 border border-orange-100 shadow-sm hover:shadow-2xl hover:shadow-orange-500/20 hover:-translate-y-2 transition duration-300 overflow-hidden">
+            <div class="absolute -right-6 -top-6 text-[120px] font-black text-orange-50 leading-none select-none">03</div>
+            <div class="relative w-14 h-14 rounded-2xl bg-vivid-orange text-white grid place-items-center shadow-lg shadow-orange-500/40 group-hover:rotate-6 transition">
+              <span class="material-symbols-rounded text-[28px]">fact_check</span>
+            </div>
+            <h4 class="relative mt-6 text-xl font-extrabold">구조적 검증</h4>
+            <p class="relative mt-3 text-slate-600 leading-relaxed">개발과 운영이 가능한 구조인지 끝까지 확인해 현장에서 작동하게 만듭니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Competency -->
+      <div class="mt-20 reveal rounded-[2rem] bg-gradient-to-br from-vivid-violet via-vivid-pink to-vivid-orange p-[2px]">
+        <div class="rounded-[calc(2rem-2px)] bg-white p-8 md:p-12">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-rounded text-vivid-pink text-[32px]">bolt</span>
+            <h3 class="text-2xl md:text-3xl font-black">핵심 역량</h3>
+          </div>
+          <div class="mt-8 grid md:grid-cols-3 gap-8">
+            <div>
+              <div class="flex items-center gap-2 font-extrabold text-lg"><span class="material-symbols-rounded text-vivid-violet">architecture</span>서비스 구조 설계</div>
+              <p class="mt-3 text-slate-600 leading-relaxed">퍼스트몰 3.0 개발 참여와 커머스 솔루션 실무 경험을 바탕으로, 표준 기능·커스터마이징·외부 연동 범위를 구분하고 사용자 흐름·운영 흐름·예외 정책까지 구조화합니다.</p>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 font-extrabold text-lg"><span class="material-symbols-rounded text-vivid-pink">code_blocks</span>기술 이해 기반 PM</div>
+              <p class="mt-3 text-slate-600 leading-relaxed">PHP, Node.js 개발 경험을 기반으로 요구사항을 상태값·데이터 흐름·예외 케이스까지 구체화하고, 기술 이슈를 리스크 관점으로 정리해 의사결정을 지원합니다.</p>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 font-extrabold text-lg"><span class="material-symbols-rounded text-vivid-orange">settings_suggest</span>운영 중심 서비스 디자인</div>
+              <p class="mt-3 text-slate-600 leading-relaxed">주문처리, 어드민, 클레임, CS 등 실제 운영 병목을 서비스 구조로 해결하고, 반복 업무를 줄여 사용자 경험과 운영 효율을 함께 높입니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CAREER ================= -->
+  <section id="career" class="py-24 md:py-32 bg-ink text-white relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-60"></div>
+    <div class="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full bg-vivid-violet/40 blur-[140px]"></div>
+    <div class="relative max-w-6xl mx-auto px-5 md:px-8">
+      <div class="reveal text-center">
+        <span class="inline-flex items-center gap-2 text-sm font-extrabold text-vivid-lime uppercase tracking-widest">
+          <span class="material-symbols-rounded">timeline</span> Career
+        </span>
+        <h2 class="mt-4 text-3xl md:text-5xl font-black">20년의 흐름, <span class="bg-gradient-to-r from-vivid-lime to-vivid-cyan bg-clip-text text-transparent">하나의 방향</span></h2>
+        <p class="mt-4 text-white/60 text-lg">개발에서 기획으로, 기획에서 실행과 운영으로.</p>
+      </div>
+
+      <ol class="mt-16 relative border-l-2 border-dashed border-white/15 ml-3 md:ml-0 md:border-l-0">
+        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-vivid-lime via-vivid-pink to-vivid-violet"></div>
+
+        <!-- 1 -->
+        <li class="reveal relative md:grid md:grid-cols-2 md:gap-12 mb-14 pl-8 md:pl-0">
+          <span class="absolute -left-[11px] md:left-1/2 md:-translate-x-1/2 top-1 w-5 h-5 rounded-full bg-vivid-lime ring-8 ring-vivid-lime/20"></span>
+          <div class="md:text-right md:pr-12">
+            <div class="inline-flex items-center gap-1.5 rounded-full bg-vivid-lime text-ink px-3 py-1 text-xs font-black">
+              <span class="material-symbols-rounded text-[16px]">radio_button_checked</span> NOW · 2024.10 – 현재
+            </div>
+            <h3 class="mt-3 text-2xl font-black">농업회사법인 (주)동해</h3>
+            <p class="text-white/60 font-semibold">서비스기획 / 운영 고도화 / PM</p>
+          </div>
+          <div class="mt-4 md:mt-0 md:pl-12 rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur">
+            <ul class="space-y-3 text-white/80">
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-lime text-[20px]">check_circle</span>오더프레쉬 운영 구조 고도화 — 사방넷 연동 기반 주문 처리 흐름 정리</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-lime text-[20px]">check_circle</span>주문·송장·예외 처리·상품 확장 구조 기준의 개편 우선순위 수립</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-lime text-[20px]">check_circle</span>운영 효율과 안정성 중심의 구조 개선안 도출</li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- 2 -->
+        <li class="reveal relative md:grid md:grid-cols-2 md:gap-12 mb-14 pl-8 md:pl-0">
+          <span class="absolute -left-[11px] md:left-1/2 md:-translate-x-1/2 top-1 w-5 h-5 rounded-full bg-vivid-cyan ring-8 ring-vivid-cyan/20"></span>
+          <div class="md:order-2 md:pl-12">
+            <div class="inline-flex items-center gap-1.5 rounded-full bg-vivid-cyan/20 text-vivid-cyan px-3 py-1 text-xs font-black">2018.01 – 2024.10</div>
+            <h3 class="mt-3 text-2xl font-black">20피트 (20FEET) / INDM</h3>
+            <p class="text-white/60 font-semibold">대표 / 서비스기획 총괄 / PM</p>
+          </div>
+          <div class="md:order-1 mt-4 md:mt-0 md:pr-12 rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur">
+            <ul class="space-y-3 text-white/80">
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-cyan text-[20px]">storefront</span>행복한바오밥 — 보드게임 유통 B2B 도매몰 구축 및 운영 구조 설계</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-cyan text-[20px]">restaurant</span>돈이요푸드 — 쇼핑몰 제작, 마케팅 서비스 고도화, 운영 흐름 정비</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-cyan text-[20px]">rocket_launch</span>다지(DARZII) — 상품 기획부터 와디즈 런칭까지 전 과정 리딩</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-cyan text-[20px]">sports_golf</span>바로파크골프 — 문제 정의, UX 흐름 설계, 프로토타입 기획</li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- 3 -->
+        <li class="reveal relative md:grid md:grid-cols-2 md:gap-12 mb-14 pl-8 md:pl-0">
+          <span class="absolute -left-[11px] md:left-1/2 md:-translate-x-1/2 top-1 w-5 h-5 rounded-full bg-vivid-pink ring-8 ring-vivid-pink/20"></span>
+          <div class="md:text-right md:pr-12">
+            <div class="inline-flex items-center gap-1.5 rounded-full bg-vivid-pink/20 text-pink-300 px-3 py-1 text-xs font-black">2015.01 – 2016.12</div>
+            <h3 class="mt-3 text-2xl font-black">엔토리 / 알트원 / 강게임즈</h3>
+            <p class="text-white/60 font-semibold">부장 / 팀장 / 운영 총괄</p>
+          </div>
+          <div class="mt-4 md:mt-0 md:pl-12 rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur">
+            <ul class="space-y-3 text-white/80">
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-pink text-[20px]">sports_esports</span>일본 퍼블리싱 서비스 구축 및 리빌딩 총괄</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-pink text-[20px]">groups</span>스포츠 커뮤니티 사이트·앱 런칭</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-pink text-[20px]">sync_alt</span>대규모 사용자 기반 운영 프로세스·실시간 정보 연동 구조 설계</li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- 4 -->
+        <li class="reveal relative md:grid md:grid-cols-2 md:gap-12 mb-14 pl-8 md:pl-0">
+          <span class="absolute -left-[11px] md:left-1/2 md:-translate-x-1/2 top-1 w-5 h-5 rounded-full bg-vivid-orange ring-8 ring-vivid-orange/20"></span>
+          <div class="md:order-2 md:pl-12">
+            <div class="inline-flex items-center gap-1.5 rounded-full bg-vivid-orange/20 text-orange-300 px-3 py-1 text-xs font-black">2009.02 – 2014.04</div>
+            <h3 class="mt-3 text-2xl font-black">가비아 (Gabia) / 가비아C&amp;S</h3>
+            <p class="text-white/60 font-semibold">과장 / 팀장 / 서비스 설계</p>
+            <p class="mt-2 text-sm text-white/50">이커머스 PM으로서의 코어가 형성된 시기</p>
+          </div>
+          <div class="md:order-1 mt-4 md:mt-0 md:pr-12 rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur">
+            <ul class="space-y-3 text-white/80">
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-orange text-[20px]">shopping_cart</span>퍼스트몰 3.0 개발 참여 — 회원/결제 구조 및 서비스 흐름 정의</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-orange text-[20px]">map</span>쇼핑맵·소셜매니저 런칭 — 랭키닷컴 9위, 급격한 트래픽 대응</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-orange text-[20px]">apartment</span>전자랜드, 스와로브스키 등 엔터프라이즈 쇼핑몰 구축</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-orange text-[20px]">autorenew</span>코리아나 제니스웰 등 전문몰 리뉴얼 리딩</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-orange text-[20px]">support_agent</span>고객센터 경험으로 실제 운영 이슈·요구사항 파악</li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- 5 -->
+        <li class="reveal relative md:grid md:grid-cols-2 md:gap-12 pl-8 md:pl-0">
+          <span class="absolute -left-[11px] md:left-1/2 md:-translate-x-1/2 top-1 w-5 h-5 rounded-full bg-vivid-violet ring-8 ring-vivid-violet/20"></span>
+          <div class="md:text-right md:pr-12">
+            <div class="inline-flex items-center gap-1.5 rounded-full bg-vivid-violet/25 text-violet-300 px-3 py-1 text-xs font-black">2005 – 2008 · Early Career</div>
+            <h3 class="mt-3 text-2xl font-black">개발 · 기획 · 운영 · 영업</h3>
+            <p class="text-white/60 font-semibold">실무형 PM의 기반</p>
+          </div>
+          <div class="mt-4 md:mt-0 md:pl-12 rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur">
+            <ul class="space-y-3 text-white/80">
+              <li class="flex gap-2"><span class="material-symbols-rounded text-violet-300 text-[20px]">child_care</span>유치원 원아관리 솔루션 직접 제작·판매</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-violet-300 text-[20px]">favorite</span>감성포털 싸이젬 PM</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-violet-300 text-[20px]">emoji_events</span>경남정보올림피아드 금상 (2005)</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects" class="py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <span class="inline-flex items-center gap-2 text-sm font-extrabold text-vivid-pink uppercase tracking-widest">
+            <span class="material-symbols-rounded">deployed_code</span> Projects
+          </span>
+          <h2 class="mt-4 text-3xl md:text-5xl font-black leading-tight">주요 프로젝트</h2>
+        </div>
+        <p class="text-slate-500 text-lg max-w-md">데이터 구조 표준화부터 바이브코딩까지, 기획이 실제로 작동하게 만든 기록입니다.</p>
+      </div>
+
+      <div class="mt-12 grid lg:grid-cols-6 gap-5">
+
+        <!-- 01 쇼핑맵 -->
+        <article class="reveal lg:col-span-4 group relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-vivid-violet to-vivid-blue text-white p-8 md:p-10 hover:-translate-y-1 transition duration-300 shadow-xl shadow-violet-500/20">
+          <span class="material-symbols-rounded absolute -right-8 -bottom-8 text-[220px] text-white/10 group-hover:scale-110 group-hover:rotate-6 transition duration-500">map</span>
+          <div class="relative">
+            <div class="flex items-center justify-between">
+              <span class="rounded-full bg-white/20 backdrop-blur px-3 py-1 text-xs font-black">01 · Platform</span>
+              <span class="text-sm font-bold text-white/70">Gabia</span>
+            </div>
+            <h3 class="mt-6 text-3xl md:text-4xl font-black">쇼핑맵 · 소셜매니저</h3>
+            <p class="mt-2 text-white/80 font-semibold">플랫폼 구조 설계 — 데이터 구조 표준화로 플랫폼 사고의 출발점을 만든 프로젝트</p>
+            <p class="mt-5 text-white/80 leading-relaxed max-w-2xl">
+              제휴처마다 다른 XML·JSON·HTML·CSV 상품 정보를 하나의 기준으로 변환하고, 반복 가능한 수집·가공·공급 흐름을 설계했습니다. 정리된 데이터는 <strong class="text-white">KTH, 삼성SDS</strong> 등 고객사에 공급되었고, 오프라인 쿠폰 소비 특성에 맞춘 지도 기반 지역 이벤트 서비스까지 기획했습니다.
+            </p>
+            <div class="mt-6 flex flex-wrap items-center gap-2 text-sm font-bold">
+              <span class="inline-flex items-center gap-1 rounded-xl bg-white text-vivid-violet px-3 py-2"><span class="material-symbols-rounded text-[18px]">download</span>수집</span>
+              <span class="material-symbols-rounded text-white/60">arrow_forward</span>
+              <span class="inline-flex items-center gap-1 rounded-xl bg-white text-vivid-violet px-3 py-2"><span class="material-symbols-rounded text-[18px]">filter_alt</span>정제</span>
+              <span class="material-symbols-rounded text-white/60">arrow_forward</span>
+              <span class="inline-flex items-center gap-1 rounded-xl bg-white text-vivid-violet px-3 py-2"><span class="material-symbols-rounded text-[18px]">sort</span>재배열</span>
+            </div>
+            <div class="mt-6 pt-6 border-t border-white/20 text-sm text-white/70"><span class="font-black text-white">역할</span> · UX 기획 · 구조 설계 · 개발 리딩</div>
+          </div>
+        </article>
+
+        <!-- 02 퍼스트몰 -->
+        <article class="reveal lg:col-span-2 group relative overflow-hidden rounded-[2rem] bg-white border border-pink-100 p-8 hover:-translate-y-1 hover:shadow-2xl hover:shadow-pink-500/20 transition duration-300">
+          <span class="material-symbols-rounded absolute -right-6 -bottom-6 text-[160px] text-pink-50 group-hover:scale-110 transition duration-500">shopping_bag</span>
+          <div class="relative">
+            <span class="rounded-full bg-vivid-pink/10 text-vivid-pink px-3 py-1 text-xs font-black">02 · Solution</span>
+            <h3 class="mt-6 text-2xl font-black">가비아 퍼스트몰</h3>
+            <p class="mt-1 text-slate-500 font-semibold text-sm">상용 커머스 구조 설계</p>
+            <p class="mt-4 text-slate-600 leading-relaxed">여러 상점이 공통으로 쓰는 회원·제휴·관리자 흐름을 구조적으로 분리하고, 운영자가 판단할 지점과 시스템이 처리할 지점을 명확히 나눴습니다.</p>
+            <ul class="mt-4 space-y-2 text-sm font-semibold">
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-pink text-[18px]">play_arrow</span>운영 리스크 기반 예외 처리 기준 설계</li>
+              <li class="flex gap-2"><span class="material-symbols-rounded text-vivid-pink text-[18px]">play_arrow</span>반복 적용 가능한 엔진 운영 프로세스</li>
+            </ul>
+            <div class="mt-6 pt-5 border-t border-slate-100 text-sm text-slate-500"><span class="font-black text-ink">역할</span> · 회원·제휴 기획 · 프로세스 정의 · 엔진 개발</div>
+          </div>
+        </article>
+
+        <!-- 03 공부선배마켓 -->
+        <article class="reveal lg:col-span-2 group relative overflow-hidden rounded-[2rem] bg-white border border-orange-100 p-8 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/20 transition duration-300">
+          <span class="material-symbols-rounded absolute -right-6 -bottom-6 text-[160px] text-orange-50 group-hover:scale-110 transition duration-500">school</span>
+          <div class="relative">
+            <span class="rounded-full bg-vivid-orange/10 text-vivid-orange px-3 py-1 text-xs font-black">03 · e-commerce</span>
+            <h3 class="mt-6 text-2xl font-black">공부선배마켓</h3>
+            <p class="mt-1 text-slate-500 font-semibold text-sm">정책 설계와 서비스 구현</p>
+            <p class="mt-4 text-slate-600 leading-relaxed">퍼스트몰 기반 커스터마이징으로 메뉴 구조·이용 흐름·정책을 정의하고, WBS·화면 설계·QA까지 이어 요구사항을 실제 서비스로 구현했습니다.</p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs font-bold">
+              <span class="rounded-lg bg-orange-50 text-vivid-orange px-2.5 py-1">WBS</span>
+              <span class="rounded-lg bg-orange-50 text-vivid-orange px-2.5 py-1">화면 설계</span>
+              <span class="rounded-lg bg-orange-50 text-vivid-orange px-2.5 py-1">개발 산출물</span>
+              <span class="rounded-lg bg-orange-50 text-vivid-orange px-2.5 py-1">테스트 &amp; QA</span>
+            </div>
+            <div class="mt-6 pt-5 border-t border-slate-100 text-sm text-slate-500"><span class="font-black text-ink">역할</span> · 기획 · 정책 정의 · 산출물 작성 · 개발</div>
+          </div>
+        </article>
+
+        <!-- 04 바로파크골프 -->
+        <article class="reveal lg:col-span-2 group relative overflow-hidden rounded-[2rem] bg-vivid-lime text-ink p-8 hover:-translate-y-1 hover:shadow-2xl hover:shadow-lime-500/30 transition duration-300">
+          <span class="material-symbols-rounded absolute -right-6 -bottom-6 text-[160px] text-ink/10 group-hover:scale-110 transition duration-500">golf_course</span>
+          <div class="relative">
+            <span class="rounded-full bg-ink text-vivid-lime px-3 py-1 text-xs font-black">04 · 0 → 1</span>
+            <h3 class="mt-6 text-2xl font-black">바로파크골프</h3>
+            <p class="mt-1 text-ink/60 font-semibold text-sm">0→1 서비스 설계</p>
+            <p class="mt-4 text-ink/80 leading-relaxed">시니어 사용자를 위한 파크골프 스코어 서비스. 직관적 UX와 오프라인 환경 대응을 기준으로 문제 정의부터 프로토타입까지 직접 주도했습니다.</p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs font-bold">
+              <span class="inline-flex items-center gap-1 rounded-lg bg-ink/10 px-2.5 py-1"><span class="material-symbols-rounded text-[14px]">elderly</span>시니어 UX</span>
+              <span class="inline-flex items-center gap-1 rounded-lg bg-ink/10 px-2.5 py-1"><span class="material-symbols-rounded text-[14px]">wifi_off</span>오프라인 대응</span>
+              <span class="inline-flex items-center gap-1 rounded-lg bg-ink/10 px-2.5 py-1"><span class="material-symbols-rounded text-[14px]">draw</span>Figma</span>
+            </div>
+            <div class="mt-6 pt-5 border-t border-ink/15 text-sm text-ink/60"><span class="font-black text-ink">역할</span> · UX 기획 · 구조 설계 · 프로토타입 제작</div>
+          </div>
+        </article>
+
+        <!-- 05 오더프레쉬 -->
+        <article class="reveal lg:col-span-2 group relative overflow-hidden rounded-[2rem] bg-ink text-white p-8 hover:-translate-y-1 hover:shadow-2xl hover:shadow-pink-500/30 transition duration-300">
+          <div class="absolute -top-20 -right-20 w-56 h-56 rounded-full bg-vivid-pink/40 blur-3xl"></div>
+          <span class="material-symbols-rounded absolute -right-6 -bottom-6 text-[160px] text-white/5 group-hover:scale-110 transition duration-500">dashboard</span>
+          <div class="relative">
+            <div class="flex items-center gap-2">
+              <span class="rounded-full bg-gradient-to-r from-vivid-pink to-vivid-orange px-3 py-1 text-xs font-black">05 · Current</span>
+              <span class="inline-flex items-center gap-1 text-xs font-bold text-vivid-lime"><span class="material-symbols-rounded text-[14px]">auto_awesome</span>Vibe Coding</span>
+            </div>
+            <h3 class="mt-6 text-2xl font-black">오더프레쉬</h3>
+            <p class="mt-1 text-white/50 font-semibold text-sm">바이브코딩 기반 운영 개선</p>
+            <p class="mt-4 text-white/75 leading-relaxed">주문취합 프로그램과 운영 대시보드를 바이브코딩으로 직접 제작해 반복 업무를 줄이고, 소포장 골라담기·제철 장보기 등 신사업 방향을 사업계획서로 구체화했습니다.</p>
+            <div class="mt-6 pt-5 border-t border-white/10 text-sm text-white/50"><span class="font-black text-white">역할</span> · 운영 진단 · 바이브코딩 구현 · 사업계획서 · 신규 사업 기획</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Other projects -->
+      <div class="reveal mt-10 rounded-3xl bg-white border border-violet-100 p-6 md:p-8">
+        <div class="flex items-center gap-2 font-extrabold"><span class="material-symbols-rounded text-vivid-violet">more_horiz</span>그 외 프로젝트</div>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <span class="inline-flex items-center gap-2 rounded-2xl bg-violet-50 px-4 py-2.5 font-semibold text-sm"><span class="material-symbols-rounded text-vivid-violet text-[20px]">devices</span>전자랜드 쇼핑몰 구축</span>
+          <span class="inline-flex items-center gap-2 rounded-2xl bg-pink-50 px-4 py-2.5 font-semibold text-sm"><span class="material-symbols-rounded text-vivid-pink text-[20px]">diamond</span>스와로브스키 쇼핑몰 구축</span>
+          <span class="inline-flex items-center gap-2 rounded-2xl bg-orange-50 px-4 py-2.5 font-semibold text-sm"><span class="material-symbols-rounded text-vivid-orange text-[20px]">spa</span>코리아나 제니스웰 리뉴얼</span>
+          <span class="inline-flex items-center gap-2 rounded-2xl bg-lime-50 px-4 py-2.5 font-semibold text-sm"><span class="material-symbols-rounded text-lime-600 text-[20px]">casino</span>행복한바오밥 B2B 도매몰</span>
+          <span class="inline-flex items-center gap-2 rounded-2xl bg-cyan-50 px-4 py-2.5 font-semibold text-sm"><span class="material-symbols-rounded text-cyan-600 text-[20px]">lunch_dining</span>돈이요푸드</span>
+          <span class="inline-flex items-center gap-2 rounded-2xl bg-blue-50 px-4 py-2.5 font-semibold text-sm"><span class="material-symbols-rounded text-vivid-blue text-[20px]">rocket_launch</span>다지(DARZII) 와디즈 런칭</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORKING STYLE + MAKER ================= -->
+  <section id="style" class="py-24 md:py-32 bg-gradient-to-br from-violet-100 via-pink-50 to-orange-50">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="reveal text-center">
+        <span class="inline-flex items-center gap-2 text-sm font-extrabold text-vivid-blue uppercase tracking-widest">
+          <span class="material-symbols-rounded">psychology</span> Working Style
+        </span>
+        <h2 class="mt-4 text-3xl md:text-5xl font-black">팀과 조직에 기여하는 <span class="text-gradient">4가지 원칙</span></h2>
+      </div>
+
+      <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="reveal rounded-3xl bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-vivid-violet to-vivid-blue text-white grid place-items-center"><span class="material-symbols-rounded">schema</span></div>
+          <h3 class="mt-5 text-lg font-black">구조적 사고</h3>
+          <p class="mt-2 text-slate-600 leading-relaxed text-sm">기능보다 먼저 구조를 봅니다. 문제를 시스템 전체 흐름에서 해결합니다.</p>
+        </div>
+        <div class="reveal rounded-3xl bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-vivid-pink to-vivid-orange text-white grid place-items-center"><span class="material-symbols-rounded">speed</span></div>
+          <h3 class="mt-5 text-lg font-black">빠른 검증 (실행력)</h3>
+          <p class="mt-2 text-slate-600 leading-relaxed text-sm">문서에서 멈추지 않습니다. 직접 구현하고 빠르게 검증합니다.</p>
+        </div>
+        <div class="reveal rounded-3xl bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-vivid-orange to-yellow-400 text-white grid place-items-center"><span class="material-symbols-rounded">trending_up</span></div>
+          <h3 class="mt-5 text-lg font-black">비즈니스 실효성</h3>
+          <p class="mt-2 text-slate-600 leading-relaxed text-sm">기술보다 효과를 먼저 봅니다. 사업에 실제로 기여하는 방향을 우선합니다.</p>
+        </div>
+        <div class="reveal rounded-3xl bg-white p-7 shadow-sm hover:shadow-xl hover:-translate-y-1 transition">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-lime-400 to-vivid-cyan text-white grid place-items-center"><span class="material-symbols-rounded">security</span></div>
+          <h3 class="mt-5 text-lg font-black">견고한 예외 설계</h3>
+          <p class="mt-2 text-slate-600 leading-relaxed text-sm">정상 흐름보다 예외를 먼저 봅니다. 운영에서 흔들리지 않는 기준을 설계합니다.</p>
+        </div>
+      </div>
+
+      <!-- Maker -->
+      <div class="reveal mt-16 grid lg:grid-cols-2 gap-8 items-center rounded-[2rem] bg-ink text-white p-8 md:p-12 overflow-hidden relative">
+        <div class="absolute -left-20 -bottom-20 w-72 h-72 rounded-full bg-vivid-cyan/30 blur-3xl"></div>
+        <div class="relative">
+          <span class="inline-flex items-center gap-2 rounded-full bg-vivid-cyan/20 text-vivid-cyan px-3 py-1 text-xs font-black">
+            <span class="material-symbols-rounded text-[16px]">precision_manufacturing</span> Hardware / Maker
+          </span>
+          <h3 class="mt-5 text-2xl md:text-4xl font-black leading-tight">필요하면<br>직접 만들고 검증합니다.</h3>
+          <p class="mt-5 text-white/70 leading-relaxed">
+            CNC 라우터와 3D 프린터 하드웨어를 직접 제작하고 제어 구조까지 구현했습니다. 구동 방식, 부품 구조, 제어 흐름, 실제 작동 조건을 함께 이해하며 아이디어를 물리적으로 구현 가능한 형태로 바꿔왔습니다.
+          </p>
+        </div>
+        <div class="relative grid grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-center">
+            <span class="material-symbols-rounded text-[40px] text-vivid-lime">view_in_ar</span>
+            <div class="mt-2 font-bold">3D 프린터 제작</div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-center">
+            <span class="material-symbols-rounded text-[40px] text-vivid-pink">carpenter</span>
+            <div class="mt-2 font-bold">CNC 라우터 제작</div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-center">
+            <span class="material-symbols-rounded text-[40px] text-vivid-orange">memory</span>
+            <div class="mt-2 font-bold">제어 구조 구현</div>
+          </div>
+          <div class="rounded-2xl bg-white/5 border border-white/10 p-5 text-center">
+            <span class="material-symbols-rounded text-[40px] text-vivid-cyan">sensors</span>
+            <div class="mt-2 font-bold">IoT 시스템</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Etc info -->
+      <div class="reveal mt-8 grid sm:grid-cols-3 gap-4">
+        <div class="flex items-center gap-4 rounded-2xl bg-white/80 backdrop-blur p-5">
+          <span class="material-symbols-rounded text-[32px] text-vivid-violet">school</span>
+          <div><div class="text-xs font-bold text-slate-400">EDUCATION</div><div class="font-bold">경희사이버대 컴퓨터인터넷공학 학사</div></div>
+        </div>
+        <div class="flex items-center gap-4 rounded-2xl bg-white/80 backdrop-blur p-5">
+          <span class="material-symbols-rounded text-[32px] text-vivid-pink">military_tech</span>
+          <div><div class="text-xs font-bold text-slate-400">MILITARY</div><div class="font-bold">산업기능요원 복무 완료</div></div>
+        </div>
+        <div class="flex items-center gap-4 rounded-2xl bg-white/80 backdrop-blur p-5">
+          <span class="material-symbols-rounded text-[32px] text-vivid-orange">emoji_events</span>
+          <div><div class="text-xs font-bold text-slate-400">AWARD</div><div class="font-bold">경남정보올림피아드 금상</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="relative py-24 md:py-32 overflow-hidden bg-gradient-to-br from-vivid-violet via-vivid-pink to-vivid-orange text-white">
+    <div class="absolute inset-0 grid-bg opacity-40"></div>
+    <div class="relative max-w-5xl mx-auto px-5 md:px-8 text-center">
+      <span class="reveal material-symbols-rounded text-[56px] animate-float">handshake</span>
+      <h2 class="reveal mt-4 text-3xl md:text-6xl font-black leading-tight">
+        시스템 구조와<br>실행 속도를 함께 높이는 사람
+      </h2>
+      <p class="reveal mt-6 text-lg md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed">
+        기획과 실행의 간극을 줄이고, 복잡한 요구를 실제로 작동하는 구조로 연결합니다.<br class="hidden md:block">함께할 이야기가 있다면 편하게 연락 주세요.
+      </p>
+
+      <div class="reveal mt-12 grid sm:grid-cols-3 gap-4 text-left">
+        <div class="group rounded-3xl bg-white/15 backdrop-blur border border-white/25 p-6 hover:bg-white hover:text-ink transition">
+          <span class="material-symbols-rounded text-[32px]">alternate_email</span>
+          <div class="mt-3 text-xs font-bold opacity-70">EMAIL</div>
+          <a href="mailto:mutzero@gmail.com" class="font-extrabold text-lg break-all">mutzero@gmail.com</a>
+          <button id="copyBtn" class="mt-3 inline-flex items-center gap-1 text-xs font-bold rounded-full bg-black/20 group-hover:bg-ink group-hover:text-white px-3 py-1.5 transition">
+            <span class="material-symbols-rounded text-[16px]">content_copy</span><span id="copyText">주소 복사</span>
+          </button>
+        </div>
+        <a href="tel:01026597306" class="rounded-3xl bg-white/15 backdrop-blur border border-white/25 p-6 hover:bg-white hover:text-ink transition block">
+          <span class="material-symbols-rounded text-[32px]">call</span>
+          <div class="mt-3 text-xs font-bold opacity-70">PHONE</div>
+          <div class="font-extrabold text-lg">010-2659-7306</div>
+        </a>
+        <div class="rounded-3xl bg-white/15 backdrop-blur border border-white/25 p-6 hover:bg-white hover:text-ink transition">
+          <span class="material-symbols-rounded text-[32px]">location_on</span>
+          <div class="mt-3 text-xs font-bold opacity-70">LOCATION</div>
+          <div class="font-extrabold text-lg">경남 김해시</div>
+          <div class="text-sm opacity-80">전국 근무 협의 가능</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-ink text-white/50 py-8 text-center text-sm">
+    <div class="flex items-center justify-center gap-2">
+      <span class="material-symbols-rounded text-vivid-pink text-[18px]">favorite</span>
+      © 2025 CHOI BYEONG CHEOL · Platform / Product / Execution PM
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <a href="#home" id="toTop" class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-2xl bg-ink text-white grid place-items-center shadow-xl opacity-0 pointer-events-none transition hover:bg-vivid-pink" aria-label="맨 위로">
+    <span class="material-symbols-rounded">arrow_upward</span>
+  </a>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuBtn.querySelector('span').textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
+    });
+    document.querySelectorAll('.m-link').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.querySelector('span').textContent = 'menu';
+    }));
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i % 4) * 80 + 'ms';
+      io.observe(el);
+    });
+
+    // Counter
+    const counterIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target, target = +el.dataset.target;
+        let cur = 0; const step = Math.max(1, Math.ceil(target / 30));
+        const t = setInterval(() => { cur += step; if (cur >= target) { cur = target; clearInterval(t); } el.textContent = cur; }, 40);
+        counterIO.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(c => counterIO.observe(c));
+
+    // Back to top & active nav
+    const toTop = document.getElementById('toTop');
+    const sections = ['about', 'career', 'projects', 'style'].map(id => document.getElementById(id));
+    const links = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      toTop.classList.toggle('opacity-0', y < 600);
+      toTop.classList.toggle('pointer-events-none', y < 600);
+      let current = '';
+      sections.forEach(s => { if (y >= s.offsetTop - 200) current = s.id; });
+      links.forEach(l => {
+        const active = l.getAttribute('href') === '#' + current;
+        l.classList.toggle('bg-violet-50', active);
+        l.classList.toggle('text-vivid-violet', active);
+      });
+    });
+
+    // Copy email
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('mutzero@gmail.com');
+        document.getElementById('copyText').textContent = '복사 완료!';
+        setTimeout(() => document.getElementById('copyText').textContent = '주소 복사', 1800);
+      } catch (e) {}
+    });
+  </script>
+
+
+</body></html>
